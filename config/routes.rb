@@ -9,21 +9,21 @@ Rails.application.routes.draw do
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
 
-scope module: :public do
-  resources :customers, only: [:show,:edit,:update,:create]
-  resources :items, only: [:index,:show,:edit,:update]
-  resources :cart_items, only: [:show, :destroy]
-  resources :orders, only: [:show,:comfirm,:create,:index]
-  resources :order_details, only: [:show,:comfirm,:create,:index]
-  resources :addresses, only: [:index,:edit,:destroy,:create,:update]
-end
-  
-  
+  scope module: :public do
+    resources :customers, only: [:show,:edit,:update,:create]
+    resources :items, only: [:index,:show,:edit,:update]
+    resources :cart_items, only: [:show, :destroy]
+    resources :orders, only: [:show,:comfirm,:create,:index]
+    resources :order_details, only: [:show,:comfirm,:create,:index]
+    resources :addresses, only: [:index,:edit,:destroy,:create,:update]
+  end
+
+
   namespace :admin do
     resources :customers, only: [:index,:show,:edit,:update]
     resources :order_details, only: [:show]
     resources :orders, only: [:index,:edit,:update]
-    resources :genres, only: [:index,:edit,:update,:create]
+    resources :genre, only: [:index,:edit,:update,:create]
     resources :items, only: [:show,:edit,:new,:create]
   end
 
