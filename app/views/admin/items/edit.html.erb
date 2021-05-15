@@ -1,0 +1,42 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4'>
+      <h2>商品編集</h2>
+    </div>
+    <div class='col-md-8'></div>
+  </div>
+  <div class='row'>
+    <div class='mx-auto'>
+      <%= form_with model:@item, local:true do |f| %>
+        <div class='form-group'>
+          <label for='inputImage'>商品画像</label>
+          <%= f.attachment_field :image, placeholder:'写真' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputName'>商品名</label>
+          <%= f.text_field :name, autofocus: true, id:'inputName', placeholder:'名前' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputIntroduction'>商品説明</label>
+          <%= f.text_field :introduction, autofocus: true, id:'inputIntroduction', placeholder:'説明' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputGenre'>ジャンル</label>
+          <%= f.text_field :genre_id, autofocus: true, id:'inputGenre', placeholder:'ジャンル' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputPrice'>税抜価格</label>
+          <%= f.number_field :price, autofocus: true, id:'inputPrice', placeholder:'税抜価格' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputStatus'>販売ステータス</label>
+          <%= form.select :is_released, [['販売中',1],['販売停止中',0]], { include_blank: true, selected: 0 } %>
+        </div>
+        <div class='form-group'>
+          <%= f.submit '変更を保存', class:'btn btn-secondary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

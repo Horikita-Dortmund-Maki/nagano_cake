@@ -24,7 +24,7 @@ end
     resources :order_details, only: [:show]
     resources :orders, only: [:index,:edit,:update]
     resources :genres, only: [:index,:edit,:update,:create]
-    resources :items, only: [:show,:edit,:new,:create]
+    resources :items, only: [:idnex, :show,:edit,:new,:create]
   end
 
 

@@ -1,0 +1,30 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>商品詳細</h2>
+      <%= link_to attachment_image_tag, @item, :image, :fill, 40, 60, format:'jpeg', fallback:'no_image.jpg' %>
+    </div>
+    
+    <div class='col-md-7 offset-md-1'>
+      <table class='table table-borderless'>
+        <tr>
+          <th>商品名</th>
+          <th><%= @item.name %></th>
+        </tr>
+        <tr>
+          <th>商品説明</th>
+          <th><%= @item.introduction %></th>
+        </tr>
+        <tr>
+          <th>ジャンル</th>
+          <th><%= @genre.name %></th>
+        </tr>
+        <tr>
+          <th>税込価格<br>（税抜き価格）</th>
+          <th><%= @item.price*1.08 %>(<%= @item.price %>)</th>
+        </tr>
+      </table>
+    </div>
+    <div class='col-md-1'></div>
+  </div>
+</div>
