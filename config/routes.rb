@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
 
+
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
     resources :items, only: [:index,:show,:edit,:update]
@@ -16,6 +17,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:show,:comfirm,:create,:index]
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :addresses, only: [:index,:edit,:destroy,:create,:update]
+    get '/my_cart' => 'cart_items#my_cart'
+    post '/add_item' => 'cart_items#add_item'
+    post '/update_item' => 'cart_items#update_item'
+    delete '/delete_item' => 'cart_items#delete_item'
   end
 
 
