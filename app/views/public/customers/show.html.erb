@@ -4,4 +4,31 @@
  </div>
    <h4><strong>登録情報</strong></h4>
    <%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-sm btn-success edit_customer_#{@customer.id}" %>
+   
+   <table class="table">
+    <tr>
+     <th>氏名</th>
+     <th></th>
+    </tr>
+    <tr>
+     <th>カナ</th>
+     <th></th>
+    </tr>
+    <tr>
+     <th>郵便番号</th>
+     <th><%= @customer.postal_code %></th>
+    </tr>
+    <tr>
+     <th>住所</th>
+     <th><%= @customer.address %></th>
+    </tr>
+    <tr>
+     <th>電話番号</th>
+     <th><%= @customer.telephone_number %></th>
+    </tr>
+    <tr>
+     <th>メールアドレス</th>
+     <th><%= @customer.email %></th>
+    </tr>
+   </table>
 </div>
