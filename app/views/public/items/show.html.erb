@@ -2,7 +2,7 @@
 
 <div class="item">
 
-  <img src="<%= "#{@item.image_id}" %>">
+  <%= attachment_image_tag(@item, :image, fallback: "no_image.jpg") %>
 
   <h4><%= @item.name %></h4><br>
   <p><%= @item.introduction %></p><br>
