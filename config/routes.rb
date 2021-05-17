@@ -22,14 +22,18 @@ Rails.application.routes.draw do
   post 'orders/confirm(/:id)', to: 'orders#confirm'
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
+  
+
 
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
+    get "customers/:id/unsubscribe" => "customers#unsubscribe" 
+    put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
     resources :items, only: [:index,:show,:edit,:update]
     resources :cart_items, only: [:show, :destroy]
     resources :orders, only: [:show,:comfirm,:create,:index]
     resources :order_details, only: [:show,:comfirm,:create,:index]
-    resources :addresses, only: [:index,:edit,:destroy,:create,:update]
+    resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
   namespace :admin do
     resources :customers, only: [:index,:show,:edit,:update]

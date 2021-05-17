@@ -10,12 +10,25 @@ class Public::CustomersController < ApplicationController
   end 
   
   def update
+    @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: "You have updated user successfully."
+      redirect_to customer_path(@customer.id), notice: "You have updated customer successfully."
     else
       render 'edit'
     end
   end
+  
+    def unsubscribe
+      @customer = Customer.find(params[:id])
+    end
+  
+    def withdraw
+      @customer = Customer.find(params[:id])
+      @customer.update(id_deleted: false)
+      reset_session
+      redirect_to root_path
+    end
+  
   
   private
   def customer_params
