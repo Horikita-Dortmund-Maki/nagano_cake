@@ -1,1 +1,24 @@
-商品一覧
+<h2>商品(ジャンル名)一覧(全<%= @all_items.count %>件)</h2>
+
+<div class="container">
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3">
+        <div class="card">
+          <%= attachment_image_tag(item, :image, fallback: "no_image.jpg") %>
+          <div class="card-body text-center">
+            <h4 class="card-title"><%= item.name %></h4><br>
+            <h4 class="card-price">¥<%= item.price %></h4>
+            <%= link_to '詳細を見る',item_path(item.id), class: "btn btn-outline-secondary btn-block" %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <div class='container mt-5'>
+    <div class='row'>
+      <div class='mx-auto'>
+        <p><%= paginate @items %></p>
+      </div>
+    </div>
+  </div>
+</div>

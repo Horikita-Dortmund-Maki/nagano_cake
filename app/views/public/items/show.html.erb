@@ -1,0 +1,16 @@
+
+
+<div class="item">
+
+  <img src="<%= "#{@item.image_id}" %>">
+
+  <h4><%= @item.name %></h4><br>
+  <p><%= @item.introduction %></p><br>
+  <p>¥ <%= @item.price %> (税込)</p>
+
+  <p>個数選択</p>
+
+
+  <%= link_to "カートに入れる", cart_item_path(current_customer), class: 'btn btn-sm btn-success' %>
+
+</div>
