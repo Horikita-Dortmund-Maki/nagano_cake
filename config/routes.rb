@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     resources :order_details, only: [:show]
     resources :orders, only: [:index,:edit,:show,:update]
     resources :genre, only: [:index,:edit,:update,:create]
-    resources :items, only: [:index,:show,:edit,:new,:create]
+    resources :items, only: [:index,:show,:edit,:new,:create, :update]
   end
 
 
