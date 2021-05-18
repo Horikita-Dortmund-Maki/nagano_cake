@@ -11,10 +11,10 @@
       <p><%= @item.introduction %></p><br>
       <p>¥ <%= @item.price %> (税込)</p>
       <!--ここはLink＿toではなくFormwithで個数とItem＿idをSubmitした方が良さそう-->
-      <%= form_with model: @item do |f| %>
-        <%= f.select :amount, ["1", "2", "3", "4", "5"], include_blank: "個数選択" %>
-          <%= link_to "カートに入れる", add_item_path, class: 'btn btn-sm btn-success' %>
-        </div>
+      <%= form_with model: @cart_item, url: cart_items_path do |f| %>
+        <%= f.hidden_field :item_id, value: @item.id %>
+        <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], include_blank: "個数選択" %>
+          <%= f.submit "カートに入れる", class: 'btn btn-sm btn-success' %>  <!--add_item_pathの遷移先が問題 ルーティングエラーになってしまう-->
       <% end %>
 
   </div>

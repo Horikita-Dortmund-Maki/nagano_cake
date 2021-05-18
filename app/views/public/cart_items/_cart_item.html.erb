@@ -1,4 +1,4 @@
-<table class='table table-hover table-inverse col-9 table-active table-bordered'>
+<table class='table table-hover table-inverse col-9 table-active bg-ligth'>
   <thead>
     <tr>
       <th>商品名</th>
@@ -12,11 +12,16 @@
     <% cart_items.each do |cart_item| %>
       <tr>
         <td>
-            <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
-            <%= cart_item.name %>
+            <%= attachment_image_tag(cart_item.item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+            <%= cart_item.item.name %>
         </td>
-        <td><%= cart_item.price %></td>
-        <td>数量セレクト</td>
+        <td><%= cart_item.item.price %></td>
+        <td>
+          <%= form_with model: cart_item, url: cart_item_path(current_customer), method: :patch do |f| %>
+            <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>
+            <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
+          <% end %>
+        </td>
         <td>小計</td>
         <td>削除する</td>
       </tr>

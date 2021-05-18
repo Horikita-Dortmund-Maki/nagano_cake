@@ -24,15 +24,10 @@ Rails.application.routes.draw do
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
 
 
-  post '/add_item' => 'carts#add_item'
-  post '/update_item' => 'carts#update_item'
-  delete '/delete_item' => 'carts#delete_item'
-
-
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
     resources :items, only: [:index,:show,:edit,:update]
-    resources :cart_items, only: [:show, :destroy]
+    resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] #:create, :update, :destroy追加(神山)
     resources :orders, only: [:show,:comfirm,:create,:index]
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :addresses, only: [:index,:edit,:destroy,:create,:update]
