@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
     resources :items, only: [:index,:show,:edit,:update]
     resources :cart_items, only: [:show, :destroy]
-    resources :orders, only: [:show,:comfirm,:create,:index]
+    resources :orders, only: [:show,:comfirm,:create,:index,:new]
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
