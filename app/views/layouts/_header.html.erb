@@ -8,14 +8,14 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
-          <li><%= link_to ' マイページ',user_path(current_user),class: 'fas fa-home nav-link text-light' %></li>
-          <li><%= link_to ' 商品一覧',users_path,class: 'fas fa-users nav-link text-light' %></li>
-          <li><%= link_to ' カート',books_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-          <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+          <li><%= link_to ' マイページ',customer_path(current_customer),class: 'fas fa-home nav-link text-light' %></li>
+          <li><%= link_to ' 商品一覧',items_path,class: 'fas fa-users nav-link text-light' %></li>
+          <li><%= link_to ' カート',class: 'fas fa-book-open nav-link text-light'%></li>
+          <li><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete,class: 'fas fa-sign-out-alt nav-link text-light' %></li>
         <% elsif admin_signed_in? %>
           <li><%= link_to '商品一覧',admin_items_path,class: "btn btn-primary"%></li>
           <li><%= link_to '会員一覧',admin_customers_path,class: "btn btn-primary" %></li>
-       　  <li><%= link_to '注文履歴一覧',admin_orders_path,class: "btn btn-primary" %></li>
+          <li><%= link_to '注文履歴一覧',admin_orders_path,class: "btn btn-primary" %></li>
           <li><%= link_to 'ジャンル一覧',admin_genres_path,class: "btn btn-primary"%></li>
           <li><%= link_to "ログアウト", destroy_admin_session_path,class: "btn btn-primary", method: :delete %></li>
         <% else %>

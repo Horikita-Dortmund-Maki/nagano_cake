@@ -11,3 +11,18 @@ Admin.create!(
    email: 'test@test.com',
    password: 'testtest'
   )
+  
+  
+
+5.times do
+     Customer.create(
+        first_name = Faker::Japanese::Name.first_name,
+        last_name = Faker::Japanese::Name.last_name,
+        first_name = Faker::Japanese::Name.first_name,
+        last_name = Faker::Japanese::Name.last_name,
+        email: Faker::Internet.email,
+        postcode: Faker::Address.postcode,  
+        address: Faker::Address.city,
+        password: Faker::Internet.password(min_length: 8) 
+      )
+end
