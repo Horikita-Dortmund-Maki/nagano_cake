@@ -1,0 +1,75 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+   <div class="col-md-5">
+     <%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細
+        <table class="table table-borderless">
+            <tr>
+              <td>
+                <lebel>会員ID</lebel> 
+                </td>
+              <td>
+                <%= @customer.id %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label>氏名</label>
+              </td>
+              <td>
+                <%= @customer.last_name %><%= @customer.first_name %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lebel>フリガナ</lebel>
+              </td>
+              <td>
+                <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lebel>郵便番号</lebel>
+              </td>
+              <td>
+                 <%= @customer.postal_code %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lebel>住所</lebel>
+              </td>
+              <td>
+                  <%= @customer.address %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lebel>電話番号</lebel>
+              </td>
+              <td>
+                <%= @customer.telephone_number %>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <lebel>メールアドレス</lebel>
+              </td>
+              <td>
+                 <%= @customer.email %>
+              </td>
+            </tr>
+            <tr>
+            <td>会員ステータス</td>
+            <% if @customer.id_deleted == true %>
+              <td>退会</td>
+            <% else %>
+              <td>有効</td>
+            <% end %>
+            </tr>
+             <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
+             <td><%= link_to "注文履歴一覧を見る",admin_orders_path,class:"btn btn-primary" %></td>
+        </table>
+     </div>
+    </div>
+ </div>

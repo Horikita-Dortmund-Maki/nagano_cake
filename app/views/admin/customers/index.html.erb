@@ -13,6 +13,19 @@
               </tr>
             </thead>
             <tbody>
-              <!--ここにeach文が入る-->
+              <% @customers.each do |customer| %>
+              <th><%= customer.id %></th>
+              <th><%= link_to admin_customer_path(customer)  do %>
+                   <%= customer.last_name %><%= customer.first_name %>
+                  <% end %>
+              </th>
+              <th><%= customer.email %></th>
+            <% if customer.id_deleted == true %>
+              <th>退会</th>
+            <% else %>
+              <th>有効</th>
+            <% end %>
+      <% end %>
             </tbody>
         </table>
+    

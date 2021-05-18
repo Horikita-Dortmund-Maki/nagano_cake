@@ -1,0 +1,67 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-6">
+      <p><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</p>
+        <%= form_for(@customer, url: admin_path(@customer)) do |f| %>
+            <table class="table table-borderless">
+                      <tr>
+                        <td><lebel>会員ID</lebel></td>
+                        <td><%= @customer.id %></td>
+                      </tr>
+                   <div class="form-group">
+                      <tr>
+                        <td><lebel>氏名</lebel></td>
+                        <td><%= f.text_field :last_name,class:"form-control"  %></td>
+                        <td><%= f.text_field :first_name,class:"form-control"  %></td>
+                       </tr>
+                    </div>
+                    <div class="form-group">
+                      <tr>
+                        <td><lebel>フリガナ</lebel></td>
+                        <td><%= f.text_field :last_name_kana,class:"form-control" %></td>
+                        <td><%= f.text_field :first_name_kana,class:"form-control"  %></td>
+                      </tr>
+                    </div>     
+                    <div class="form-group">
+                      <tr>
+                        <td><lebel>郵便番号</lebel></td>
+                        <td><%= f.text_field :postal_code, class:"form-control"  %></td>
+                      </tr>
+                    </div>
+                    <div class="form-group">
+                      <tr>
+                         <td><lebel>住所</lebel></td>
+                         <td><%= f.text_field :address,class:"form-control" %></td>
+                      </tr>
+                    </div>
+                    <div class="form-group">
+                      <tr>
+                         <td><lebel>電話番号</lebel></td>
+                         <td><%= f.telephone_field :telephone_number,class:"form-control"  %></td>
+                      </tr>
+                    </div>
+                    <div class="form-group">
+                      <tr>
+                         <td><lebel>メールアドレス</lebel></td>
+                         <td><%= f.email_field :email,class:"form-control"  %></td>
+                      </tr>
+                    </div>
+                    <div class='form-group'>
+                      <tr>
+                         <td><label>会員ステータス</label></td>
+                         <td>
+                            <%= f.radio_button :id_deleted, :false %>
+                            <%= f.label :id_deleted, '有効', {value: :false, style: 'display: inline-block;'} %>
+                            <%= f.radio_button :id_deleted, :true %>
+                            <%= f.label :id_deleted, '退会', {value: :true, style: 'display: inline-block;'} %>
+                         </td>
+                      </tr>
+                    </div>
+                </table>
+              <div class="form-group">
+                  <%= f.submit "変更を保存", class:'btn btn-success' %>
+              </div>
+          <% end %>
+        </div>
+    </div>
+</div>
