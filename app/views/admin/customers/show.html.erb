@@ -60,12 +60,17 @@
               </td>
             </tr>
             <tr>
-            <td>会員ステータス</td>
+            <tr>
+              <td>
+               <lebel>会員ステータス</lebel>
+              </td>
+              <td>
             <% if @customer.id_deleted == true %>
-              <td>退会</td>
+              退会
             <% else %>
-              <td>有効</td>
+              有効
             <% end %>
+              </td>
             </tr>
              <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
              <td><%= link_to "注文履歴一覧を見る",admin_orders_path,class:"btn btn-primary" %></td>
