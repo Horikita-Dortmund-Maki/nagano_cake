@@ -5,6 +5,23 @@ class ApplicationController < ActionController::Base
     admin_items_path(resource)
   end
 
+
+  protect_from_forgery with: :exception
+
+  helper_method :current_cart_item
+
+  def current_customer
+    if session[:cart_item_id]
+      @cart_items = CartItem.find(session[:cart_items_id])
+    else
+      @cart_items = CartItem.create
+      session[:cart_item_id] = @cart_items.id
+    end
+  end
+
+
+
+
   protected
 
   def configure_permitted_parameters

@@ -1,16 +1,22 @@
 
+<div class="container">
+  <div class="row">
 
-<div class="item">
+    <div class="col-md-6">
+      <%= attachment_image_tag(@item, :image, :fill, 400, 300, fallback: "no_image.jpg") %>
+    </div>
 
-  <%= attachment_image_tag(@item, :image, fallback: "no_image.jpg") %>
+    <div class="col-md-6">
+      <h4><%= @item.name %></h4><br>
+      <p><%= @item.introduction %></p><br>
+      <p>¥ <%= @item.price %> (税込)</p>
+      <!--ここはLink＿toではなくFormwithで個数とItem＿idをSubmitした方が良さそう-->
+      <%= form_with model: @item do |f| %>
+        <%= f.select :amount, ["1", "2", "3", "4", "5"], include_blank: "個数選択" %>
+          <%= link_to "カートに入れる", add_item_path, class: 'btn btn-sm btn-success' %>
+        </div>
+      <% end %>
 
-  <h4><%= @item.name %></h4><br>
-  <p><%= @item.introduction %></p><br>
-  <p>¥ <%= @item.price %> (税込)</p>
-
-  <p>個数選択</p>
-
-
-  <%= link_to "カートに入れる", cart_item_path(current_customer), class: 'btn btn-sm btn-success' %>
-
+  </div>
 </div>
+

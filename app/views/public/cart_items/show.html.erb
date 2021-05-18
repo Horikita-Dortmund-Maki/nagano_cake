@@ -1,3 +1,31 @@
-<h2>カート内アイテム</h2>
-<%= render partial: "cart_items/cart_item", collection: @cart_items, as: "cart_item"%>
-<h2><%= "合計：#{@total}円" %></h2>
+
+
+<div class="d-flex justify-content-between">
+  <div class="p-2 bg-light">ショッピングカート</div>
+  <div class="p-2"><%= link_to "カートを空にする", items_path, class: 'btn btn-sm btn-danger ' %></div>
+</div>
+
+
+
+<%= render "public/cart_items/cart_item", cart_items: @cart_items %>
+
+
+
+<div class='container mt-5'>
+    <div class='row'>
+      <div class=''>
+        <%= link_to "買い物を続ける", items_path, class: 'btn btn-sm btn-primary' %>
+      </div>
+    </div>
+</div>
+
+
+    <h2><%= "合計金額：#{@total}円" %></h2>
+
+<div class='container mt-5'>
+    <div class='row'>
+      <div class='mx-auto'>
+        <%= link_to "情報入力に進む", items_path, class: 'btn btn-sm btn-success' %>
+      </div>
+    </div>
+</div>

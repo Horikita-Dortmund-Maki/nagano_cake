@@ -1,11 +1,25 @@
-<li class="list-none">
-    <%= cart_item.item.name %>
-    <%= cart_item.item.price %>
-    <%= form_with(url: update_item_url, method: :post,local: true) do |f| %>
-    <%= f.hidden_field :item_id, value: cart_item.item.id %>
-    <%= f.number_field :amount ,value: cart_item.amount%>
-    <%= f.submit "更新", class: "" %>
+<table class='table table-hover table-inverse col-9 table-active table-bordered'>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+            <%= attachment_image_tag(item, :image, :fill, 100, 100, fallback: "no_image.jpg") %>
+            <%= cart_item.name %>
+        </td>
+        <td><%= cart_item.price %></td>
+        <td>数量セレクト</td>
+        <td>小計</td>
+        <td>削除する</td>
+      </tr>
     <% end %>
-    <%= button_to "削除", delete_item_path(item_id: cart_item.item.id), method: :delete,
-                                       data: { confirm: "商品を削除しますか？" } %>
-</li>
+  </tbody>
+</table>
