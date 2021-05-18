@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
   
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
 
 
   scope module: :public do

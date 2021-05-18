@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Genre.create!(name: 'ジャンル')
+
+10.times do |n|
+  Item.create!(name: "test#{n + 1}品目", introduction:"test!#{n + 1}品目", price:"#{n + 1}00", is_active: true, image: File.open("./app/assets/images/image#{n + 1}.png"), genre_id: 1)
+end
+
+# Item.create!(name: "test品目", introduction:"test品目", price:"11100", is_active: true, image: File.open("./app/assets/images/image1.png"), genre_id: 1)
+
