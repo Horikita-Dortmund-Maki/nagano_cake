@@ -16,12 +16,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>2020/05/20 22:22:22</th>
-          <th>roland</th>
-          <th>100</th>
-          <th>入金確認</th>
-        </tr>
+        <% @orders.each do |order| %>
+          <tr>
+            <th><%= link_to order.created_at, admin_order_path(order) %></th>
+            <th><%= order.name %></th>
+            <th><%= Order.total_amount(order.order_details) %></th>
+            <th><%= order.status %></th>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

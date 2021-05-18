@@ -13,6 +13,13 @@
               </tr>
             </thead>
             <tbody>
-              <!--ここにeach文が入る-->
+              <% @customers.each do |customer| %>
+                <tr>
+                  <th><%= customer.id %></th>
+                  <th><%= customer.last_name %><%= customer.first_name %></th>
+                  <th><%= customer.email %></th>
+                  <th><%= customer.id_deleted %></th>
+                </tr>
+              <% end %>
             </tbody>
         </table>
