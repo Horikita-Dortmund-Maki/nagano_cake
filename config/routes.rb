@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   root :to => "homes#top"
   get "home/about" =>"homes#about"
-  post 'orders/confirm(/:id)', to: 'orders#confirm'
+  
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
   
@@ -32,9 +32,12 @@ Rails.application.routes.draw do
     resources :customers, only: [:show,:edit,:update,:create]
     get "customers/:id/unsubscribe" => "customers#unsubscribe" 
     put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
+    post 'orders/new' => 'orders#create'
+    get "orders/confirm" => "orders#confirm"
+    post "orders/confirm" => "orders#confirm"
     resources :items, only: [:index,:show,:edit,:update]
     resources :cart_items, only: [:show, :destroy]
-    resources :orders, only: [:show,:comfirm,:create,:index,:new]
+    resources :orders, only: [:show,:confirm,:create,:index,:new]
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
