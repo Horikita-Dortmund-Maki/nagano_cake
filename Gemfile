@@ -70,5 +70,5 @@ gem 'bootstrap', '~> 4.5'
 gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
-
 gem 'coffee-script-source', '1.8.0'
+gem 'ransack'

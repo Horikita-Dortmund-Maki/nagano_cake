@@ -6,7 +6,7 @@
               <span class="navbar-toggler-icon"></span>
           </button>
       <div class="row">
-        <div class="col-10 ">
+        <div class="col-10 offset-2">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ">
                 <% if customer_signed_in? %>
@@ -39,7 +39,15 @@
               </ul>
             </div>
          </div>
-       </diV>
+        <div class="row">
+           <div class="col-7"></div>
+          <div class="col-3 offset-2 ">
+          <%= search_form_for@search,url: admin_items_path do |f| %>
+          <%= f.search_field :name_cont,class:'search',placeholder: 'Search' %>
+          <% end %>
+          </div>
+      </div>
+      </div>
     </div>
    </nav>
 </header>

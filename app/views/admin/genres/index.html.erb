@@ -1,5 +1,5 @@
- <div class="container customer">
-    <div class="row customer">
+ <div class="container ">
+    <div class="row">
       <div class="col-4">
            <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
              <h3>ジャンル一覧・追加</h3>
@@ -13,7 +13,7 @@
             </div>
             <div class="col-2">
               <div class="form-group row">
-                 <%= f.text_field :name,id: "text" %>
+                 <%= f.text_field :name, placeholder:'ジャンル'%>
               </div>
              </div>
              <div class="col-2">
@@ -24,18 +24,21 @@
             </div>
         <% end %>
    <!--<div class="row">-->
-     <div class="col-4">
+     <div class="col-5">
         <table class='table'>
-          <thead class="thead-light" >
+           <thead class="thead-light">
               <tr>
                 <th>ジャンル</th>
-                <th
+                <th></th>
               </tr>
             </thead>
             <tbody>
-              <div class="genre">
-               <%= render partial: 'posts/new', locals: {genres: @genres} %>
-              </div>
+            <% @genres.each do |genre| %>
+                 <tr>
+                    <td><%= genre.name %></td>
+                     <td><%= link_to '編集する',edit_admin_genre_path(genre),class: 'btn btn-success col-xs-12' %></td>
+                 </tr>
+            <% end %>
           </tbody>
         </table>
       </div>

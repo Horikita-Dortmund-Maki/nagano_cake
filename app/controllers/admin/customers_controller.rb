@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
     
+    
      
  def index
       #@customers = Customer.all
@@ -22,8 +23,6 @@ class Admin::CustomersController < ApplicationController
        render "edit"
     end
   end 
-      
-    
  private
  
      def customer_params

@@ -26,14 +26,15 @@ padding-left: 15px;
 margin: 0 20px;
 }
 
-.col-6 {
-      flex: 0 0 50%;
-    margin-left: auto;
-    display: flex-end;
+.col-4.offset-1.hoge{
     display: flex;
     justify-content: flex-end;
+    margin: 10px 0px;
 }
 
+.col-8.offset-4.pamu{
+    margin-top: 30px;
+}
 .customer{
     display: inline-block;
     margin: 10px;
@@ -58,8 +59,11 @@ margin: 0 20px;
     text_align: center;
 }
 
-
-
 .pagination {
   justify-content: center;
+}
+
+.row.hoge{
+    display: flex;
+    justify-content: center;
 }

@@ -1,12 +1,14 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-md-2'>
+    <div class='col-3 offset-1'>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
       <h2>商品編集</h2>
+      </nav>
     </div>
     <div class='col-md-8'></div>
   </div>
-  <div class='row'>
-    <div class="col-8">
+  <div class='row hoge'>
+    <div class="col-8 ">
     <div class='mx-auto'>
       <%= form_with model:@item, url: admin_item_path(@item), local:true do |f| %>
         <div class='form-group'>
