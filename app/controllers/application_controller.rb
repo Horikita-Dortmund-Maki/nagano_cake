@@ -1,11 +1,17 @@
 class ApplicationController < ActionController::Base
   
    before_action :configure_permitted_parameters, if: :devise_controller?
+   before_action :set_search
 
   def after_sign_in_path_for(resource)
     admin_items_path(resource)
   end
   
+  def set_search
+
+    @search = Item.ransack(params[:q])
+    @items = @search.result
+  end 
   protected
   
   def configure_permitted_parameters

@@ -1,37 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-       <nav class="navbar navbar-light bg-light">
-        <h3>管理者ジャンル一覧・追加</h3>
-        </nav>
-         <%= form_with(model: @grenge, remote: true) do |f| %>
+ <div class="container ">
+    <div class="row">
+      <div class="col-4">
+           <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+             <h3>ジャンル一覧・追加</h3>
+           </nav>
+       </div>
+     </div>
+      <%= form_with(model: @grenge, remote: true) do |f| %>
          <div class="row">
-             <div class="form-name row">
-              <%= f.label :ジャンル名 %>
-              <%= f.text_field :name, class: "col-xs-12",id: "text" %>
+            <div class="col-2">
+                <%= f.label :ジャンル名 %>
+            </div>
+            <div class="col-2">
+              <div class="form-group row">
+                 <%= f.text_field :name, placeholder:'ジャンル'%>
               </div>
-          
-              <div class="actions row">
-                    <%= f.submit "新規登録", class: "btn btn-success col-xs-12" %>
+             </div>
+             <div class="col-2">
+               <div class="formg-roup ">
+                  <%= f.submit "新規登録", class: "btn btn-success col-xs-12" %>
+               </div>
               </div>
             </div>
-          </div>
         <% end %>
-        
-        
+   <!--<div class="row">-->
+     <div class="col-5">
         <table class='table'>
-            <thead>
-                 <tr>
-                  <th>ジャンル</th>
-                 </tr>
+           <thead class="thead-light">
+              <tr>
+                <th>ジャンル</th>
+                <th></th>
+              </tr>
             </thead>
             <tbody>
-              <div class="genre">
-              <%= render  'posts/new',  genres: @genres %>
-              </div>
-            </tbody>
+            <% @genres.each do |genre| %>
+                 <tr>
+                    <td><%= genre.name %></td>
+                     <td><%= link_to '編集する',edit_admin_genre_path(genre),class: 'btn btn-success col-xs-12' %></td>
+                 </tr>
+            <% end %>
+          </tbody>
         </table>
-
-    </div>
-  </div>
-</div>
+      </div>
+ </div>

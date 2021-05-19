@@ -1,19 +1,20 @@
 <div class='container'>
-  <div class='row'>
-    <div class='md-col-3 mr-auto'>
-      <h2>商品一覧</h2>
+  <div class='row '>
+    <div class='col-md-3 offset-md-1'>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+       <h3>商品一覧</h3>
+      </nav>
     </div>
-    <div class='col-auto'>
+    <div class='col-3 offset-5'>
       <%= link_to new_admin_item_path, class:"btn btn-outline-dark rounded-circle p-0 ", :style => "width:2rem;height:2rem;" do %>
       +
       <% end %>
     </div>
   </div>
-
-  <div class='row'>
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr>
+  <div class='row hoge'>
+   <div class="col-8 offset-1">
+    <table class='table'>
+      <thead class="thead-light">
           <th>商品ID</th>
           <th>商品名</th>
           <th>税抜き価格</th>
@@ -37,5 +38,6 @@
         <% end %>
       </tbody>
     </table>
+   </div>
   </div>
 </div>
