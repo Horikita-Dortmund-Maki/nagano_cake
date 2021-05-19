@@ -1,2 +1,2 @@
-$('.genre').html("<%= j(render 'posts/new', genres: @genres) %>");
+$(".genre").html("<%= j(render partial: 'posts/new', locals: {genres: @genres}) %>")
 $("#text").val("");

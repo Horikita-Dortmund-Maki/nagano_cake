@@ -17,3 +17,49 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+.col-md-4{
+display: inline-block;
+padding-right: 15px;
+padding-left: 15px;
+margin: 0 20px;
+}
+
+.col-6 {
+      flex: 0 0 50%;
+    margin-left: auto;
+    display: flex-end;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.customer{
+    display: inline-block;
+    margin: 10px;
+}
+
+.navbar-nav{
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navbar{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+     margin: 0px 0px 30px 0px;
+}
+
+.row{
+    width: 100%;
+    text_align: center;
+}
+
+
+
+.pagination {
+  justify-content: center;
+}

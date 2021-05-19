@@ -1,18 +1,27 @@
-<div class="container">
+<div class="container customer">
   <div class="row">
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-    
-        <h3>ジャンル編集</h3>
-         <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
-         
-               <div class="form-group">
-                  <h4>ジャンル名</h4>
-                  <%= f.text_field :name,class:"col-xs-12" %>
-                </div>
-                <div class="form-group">
-                  <%= f.submit "変更を保存", class: "btn btn-success" %>
-                </div>
-         <% end %>
+    <div class="col-8">
+        <nav class="navbar navbar-light bg-light">
+         <h3>ジャンル編集</h3>
+        </nav>
     </div>
   </div>
- </div>
+     <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
+       <div class="row">
+            <div class="col-3">
+              <h4>ジャンル名</h4>
+             </div>
+             <div class="col-3">
+             <div class="form-group">
+              <%= f.text_field :name,class:"col-xs-12" %>
+            </div>
+            </div>
+            <div class="col-3">
+            <div class="form-group">
+              <%= f.submit "変更を保存", class: "btn btn-success" %>
+            </div>
+            </div>
+        </div>
+     <% end %>
+  </div>
+ 

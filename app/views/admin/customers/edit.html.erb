@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-7">
       <p><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</p>
         <%= form_for(@customer, url: admin_path(@customer)) do |f| %>
             <table class="table table-borderless">
@@ -57,11 +57,11 @@
                          </td>
                       </tr>
                     </div>
-                </table>
-              <div class="form-group">
-                  <%= f.submit "変更を保存", class:'btn btn-success' %>
-              </div>
-          <% end %>
+               </table>
+                <div class="form-group">
+                    <%= f.submit "変更を保存", class:'btn btn-success' %>
+                </div>
+           <% end %>
         </div>
     </div>
 </div>
