@@ -19,16 +19,6 @@ class Order < ApplicationRecord
     return @@result_subtotal.round(0)
   end
 
-  def self.total_price(order_details)
-    total_price_arr = []
-    @@result_subtotal.each do |i|
-      total_price_arr << i
-    end
-    
-    return total_price_arr.sum
-
-  end
-
   enum status: {
     '入金待ち':0, '入金確認':1, '製作中':2, '発送準備中':3, '発送済み':4
   }

@@ -27,9 +27,9 @@
           </tr>
           <tr>
             <th>注文ステータス</th>
-            <%= form_with model:@Order, local:true do |f| %>
+            <%= form_with model:@Order, local:true, method: :patch do |f| %>
               <th>
-                <%= f.select :status, Order.statuses.keys, {}, class:'btn btn-outline-dark' %>
+                <%= f.select :status, Order.statuses.keys, {include_blank: @order.status}, class:'btn btn-outline-dark' %>
               </th>
               <th>
                 <%= f.submit '更新', class:'btn btn btn-success' %>
@@ -40,8 +40,10 @@
       </table>
     </div>
   </div>
+</div>
 
-  <div class='row'>
+<div class='container'>
+  <div class='row align-items-end'>
     <div class='col-md-8'>
       <table class='table'>
         <thead>
@@ -53,21 +55,23 @@
             <th>製作ステータス</th>
             <th></th>
           </tr>
+        </thead>
+        <tbody>
           <% @order_details.each do |order_detail| %>
             <tr>
               <th><%= order_detail.item.name %> </th>
               <th><%= Order.item_price_in_tax(order_detail) %></th>
               <th><%= order_detail.amount %></th>
               <th><%= Order.item_price_subtotal(order_detail) %></th>
-              <%= form_with model:OrderDetail, local:true do |f| %>
-                <th><%= f.select :making_status, OrderDetail.making_statuses.keys, {}, class:'btn btn-outline-dark' %></th>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                <th><%= f.select :making_status, OrderDetail.making_statuses.keys, {include_blank: order_detail.making_status}, class:'btn btn-outline-dark' %></th>
                 <th>
                   <%= f.submit '更新', class:'btn btn-success' %>
                 </th>
               <% end %>
             </tr>
           <% end %>
-        </thead>
+        </body>
       </table>
     </div>
 
@@ -77,16 +81,24 @@
           <tr>
             <th>商品合計</th>
             <th>
-
+              <% array = [] %>
+              <% @order.order_details.each do |order_detail| %>
+                <% array << order_detail.item.price * 1.1 * order_detail.amount %>
+              <% end %>
+              <%= array.sum %><text>円</text>
             </th>
           </tr>
           <tr>
             <th>送料</th>
-            <th>円</th>
+            <th>
+              <%= @order.shopping_cost %><text>円</text>
+            </th>
           </tr>
           <tr>
             <th>請求金額合計</th>
-            <th>円</th>
+            <th>
+              <%= array.sum + @order.shopping_cost %><text>円</text>
+            </th>
           </tr>
         </tbody>
       </table>
