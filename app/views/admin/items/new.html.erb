@@ -8,6 +8,7 @@
   <div class='row'>
     <div class='mx-auto'>
       <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
         <div class='form-group'>
           <label for='inputImage'>商品画像</label>
           <%= f.attachment_field :image, placeholder:'写真' %>

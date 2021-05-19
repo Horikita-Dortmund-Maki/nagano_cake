@@ -1,0 +1,6 @@
+ja:
+  activerecord:
+    attributes:
+      customer:
+        last_name: 名字
+        first_name: 氏名
