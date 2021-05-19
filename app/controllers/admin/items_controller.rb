@@ -1,6 +1,6 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page]).per(1)
+    @items = Item.page(params[:page]).per(10)
   end
 
   def show
@@ -16,6 +16,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     if @item.save
       redirect_to admin_items_path
+      flash[:notice] = '作成しました'
     else
       render :new
     end
@@ -29,6 +30,7 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path()
+      flash[:notice] = '更新しました'
     else
       render :edit
     end
