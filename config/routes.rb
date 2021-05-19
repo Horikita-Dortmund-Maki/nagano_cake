@@ -32,10 +32,11 @@ Rails.application.routes.draw do
     resources :addresses, only: [:index,:edit,:destroy,:create,:update]
   end
   namespace :admin do
-    resources :customers, only: [:index,:show,:edit] 
-    patch 'customers/:id' => 'customers#update' 
-    resources :order_details, only: [:show]
+    resources :customers, only: [:index,:show,:edit]
+    patch 'customers/:id' => 'customers#update'
+    resources :order_details, only: [:show,:update]
     resources :orders, only: [:index,:edit,:update,:show]
+    resources :order_details, only: [:show, :update]
     resources :genres, only: [:index,:edit,:create,:edit]
     patch 'genre/:id' => 'genres#update',as: 'genre'
     resources :items, only: [:index,:show,:edit,:new,:create,:update]
