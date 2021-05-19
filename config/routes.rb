@@ -27,11 +27,16 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
     resources :items, only: [:index,:show,:edit,:update]
-    resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] #:create, :update, :destroy追加(神山)
+    resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] do #:create, :update, :destroy追加(神山)
+      collection do
+        delete 'destroy_all'
+      end
+    end
     resources :orders, only: [:show,:comfirm,:create,:index]
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :addresses, only: [:index,:edit,:destroy,:create,:update]
   end
+
   namespace :admin do
     resources :customers, only: [:index,:show,:edit,:update]
     resources :order_details, only: [:show]

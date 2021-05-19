@@ -1,22 +1,47 @@
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between col-9">
   <div class="p-2 bg-light">ショッピングカート</div>
-  <div class="p-2"><%= link_to "カートを空にする", items_path, class: 'btn btn-sm btn-danger ' %></div>
+  <div class="p-2"><%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: 'btn btn-sm btn-danger ' %></div>
 </div>
 <%= render "public/cart_items/cart_item", cart_items: @cart_items %>
 
-<div class='container mt-5'>
+
+
+<div class="d-flex justify-content-between col-9">
+  <div class="p-2">
     <div class='row'>
       <div class=''>
         <%= link_to "買い物を続ける", items_path, class: 'btn btn-sm btn-primary' %>
       </div>
     </div>
+  </div>
+  <div class="p-2">
+    <table class='table table-hover table-inverse col-9 table-bordered '>
+      <thead></thead>
+      <tbody>
+        <tr>
+          <td class="bg-light">合計金額</td>
+          <td>
+            <% array = [] %>
+            <% @cart_items.each do |cart_item| %>
+              <% array << cart_item.item.price * cart_item.amount %>
+            <% end %>
+            <%= array.sum %>円
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<h2><%= "合計金額：  円" %></h2>
+
+
+
+<!--合計金額：<#%= CartItem.all.sum(:price) %> 円-->
+
 
 <div class='container mt-5'>
-    <div class='row'>
-      <div class='mx-auto'>
+    <div class='row col-8 '>
+      <div class='mx-auto '>
         <%= link_to "情報入力に進む", items_path, class: 'btn btn-sm btn-success' %>
       </div>
     </div>
