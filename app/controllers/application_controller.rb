@@ -25,6 +25,15 @@ class ApplicationController < ActionController::Base
 
 
 
+  def after_sign_in_path_for(resource)
+    case resource
+    when Admin
+      admin_items_path(resource)
+    when Customer
+      items_path(resource)
+    end
+  end
+
   protected
 
   def configure_permitted_parameters

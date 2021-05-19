@@ -1,0 +1,58 @@
+<div class="m-5">
+  <div class="m-5">
+    <h4><span style="background-color:#ececec">　注文情報入力　</span></h4>
+  </div>
+  
+
+
+
+  <div class="ml-5">
+    <div class="field">
+      <strong>支払方法</strong>
+      <%= form_with model:@order, url: orders_confirm_path,local: true do |f| %>
+       <div class="radio-inline">
+        <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
+        <%= f.label :payment_method, "クレジットカード" %>
+       </div>
+       <div class="radio-inline">
+        <%= f.radio_button :payment_method, :銀行振込 %>
+        <%= f.label :payment_method, "銀行振込" %>
+       </div>
+       
+       
+       
+       
+       <strong>支払方法</strong>
+       <div class="radio-inline">
+        <%= f.radio_button :address, :my_address, checked: "checked" %>
+        <%= f.label :address, "ご自身の住所" %><br>
+        <div class="pl-3">
+        〒<%= @customer.postal_code %>　<%= @customer.address %><br>
+        <%= @customer.last_name %><%= @customer.first_name %>
+        </div>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :address, :other_address %>
+        <%= f.label :address, "登録済住所から選択" %>
+      </div>
+      <div class="radio-inline">
+        <%= f.radio_button :address, :new_address %>
+        <%= f.label :address, "新しいお届け先" %>
+　　　　
+
+      </div>
+      
+      
+      
+      
+      
+        <%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+        
+    
+    <% end %>
+ </div>
+ 
+
+</div>
+  
+  
