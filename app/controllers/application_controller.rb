@@ -17,9 +17,7 @@ class ApplicationController < ActionController::Base
     @search = Item.ransack(params[:q])
     @items = @search.result
   end
- 
-
-
+  
   protected
 
   def configure_permitted_parameters
