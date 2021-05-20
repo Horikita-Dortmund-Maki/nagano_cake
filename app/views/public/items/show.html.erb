@@ -9,7 +9,7 @@
     <div class="col-md-6">
       <h4><%= @item.name %></h4><br>
       <p><%= @item.introduction %></p><br>
-      <p>¥ <%= (@item.price*1.1).round %> (税込)</p>
+      <p>¥ <%= tax_price(@item.price) %> (税込)</p>
       <!--ここはLink＿toではなくFormwithで個数とItem＿idをSubmitした方が良さそう-->
       <%= form_with model: @cart_item, url: cart_items_path do |f| %>
         <%= f.hidden_field :item_id, value: @item.id %>

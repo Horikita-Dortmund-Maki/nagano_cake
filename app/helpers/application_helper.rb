@@ -5,18 +5,16 @@ module ApplicationHelper
     (price * 1.1).round
   end
 
-  def tax_subtotal(subtotal)
+  def tax_subtotal(price, amount)
     (price * 1.1 * amount).round
   end
-
-
-
-  def tax_total(price)
-    @cart_items.each do |cart_item|
-      price << cart_item.item.price*1.1* cart_item.amount
+  
+  def tax_total_price(price)
+    array = []
+    price.each do |cart_item|
+      array << cart_item.item.price * 1.1 * cart_item.amount
     end
-    price.sum.round
+    array.sum.round
   end
-
 
 end

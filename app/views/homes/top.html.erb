@@ -33,7 +33,7 @@
             <%= attachment_image_tag(item, :image, fallback: "no_image.jpg") %>
             <div class="card-body text-center">
               <h4 class="card-title"><%= item.name %></h4><br>
-              <h4 class="card-price">¥<%= item.price %></h4>
+              <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
               <%= link_to '詳細を見る',item_path(item.id), class: "btn btn-outline-secondary btn-block" %>
             </div>
           </div>
