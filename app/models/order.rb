@@ -32,7 +32,11 @@ class Order < ApplicationRecord
     '銀行振込': 1
   }
   
+  attr_accessor :address_select
+  attr_accessor :send_address_id
   
- 
-  
+    
+    
+    
 end
+
