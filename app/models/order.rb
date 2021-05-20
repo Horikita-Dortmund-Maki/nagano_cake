@@ -27,4 +27,12 @@ class Order < ApplicationRecord
     'クレジット':0, '銀行振り込み':1
   }
 
+  enum payment_method:{
+    'クレジットカード': 0,
+    '銀行振込': 1
+  }
+  
+  
+ 
+  
 end

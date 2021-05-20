@@ -12,4 +12,5 @@ class Item < ApplicationRecord
     validates :price,numericality: {greater_than: 1}
     validates :is_active, inclusion: { in: [true, false] }
 
+  attachment :image
 end

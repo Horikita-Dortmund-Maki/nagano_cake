@@ -24,4 +24,9 @@ class Customer < ApplicationRecord
   validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   validates :id_deleted, inclusion: { in: [true, false] }
   
+    
+  
+  def active_for_authentication?
+    super && (self.id_deleted == false)
+  end
 end
