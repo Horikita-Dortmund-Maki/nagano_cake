@@ -20,7 +20,7 @@
       <tbody>
         <% @orders.each do |order| %>
           <tr>
-            <th><%= link_to order.created_at, admin_order_path(order) %></th>
+            <th><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order), :style => 'color:black;' %></th>
             <th><%= order.name %></th>
             <th><%= Order.total_amount(order.order_details) %></th>
             <th><%= order.status %></th>

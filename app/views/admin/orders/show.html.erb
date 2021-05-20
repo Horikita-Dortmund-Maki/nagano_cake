@@ -11,11 +11,11 @@
         <body>
           <tr>
             <th>購入者</th>
-            <th><%= @order.name %></th>
+            <th><%= link_to @order.name, admin_customer_path(@order.customer_id), :style => 'color:black' %></th>
           </tr>
           <tr>
             <th>注文日</th>
-            <th><%= @order.created_at %></th>
+            <th><%= @order.created_at.to_s(:datetime_jp) %></th>
           </tr>
           <tr>
             <th>配送先</th>
@@ -85,7 +85,7 @@
               <% @order.order_details.each do |order_detail| %>
                 <% array << order_detail.item.price * 1.1 * order_detail.amount %>
               <% end %>
-              <%= array.sum %><text>円</text>
+              <%= (array.sum).round %><text>円</text>
             </th>
           </tr>
           <tr>
@@ -97,7 +97,7 @@
           <tr>
             <th>請求金額合計</th>
             <th>
-              <%= array.sum + @order.shopping_cost %><text>円</text>
+              <%= (array.sum + @order.shopping_cost).round %><text>円</text>
             </th>
           </tr>
         </tbody>
