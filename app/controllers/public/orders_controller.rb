@@ -28,14 +28,13 @@ class Public::OrdersController < ApplicationController
     
     @cart_items = @customer.cart_items
     
-    array = []
+     array = []
      @cart_items.each do |cart_item|
-     array << cart_item.item.price * cart_item.amount
+     array << (cart_item.item.price * cart_item.amount * 1.1).round
      end
      array << @shopping_cost
      array.sum
      @total_payment = array.sum
-    
   end
   
   
@@ -52,7 +51,9 @@ class Public::OrdersController < ApplicationController
     order_detail.price = cart_item.item.price
     order_detail.amount = cart_item.amount
     order_detail.save!
+    cart_item.destroy
    end
+   
    
   
 

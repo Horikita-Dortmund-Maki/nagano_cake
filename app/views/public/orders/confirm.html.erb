@@ -15,9 +15,9 @@
     <% @cart_items.each do |cart_item| %>
      <tr>
        <td><%= cart_item.item.name %></td>
-       <td><%= cart_item.item.price %></td>
+       <td><%= tax_price(cart_item.item.price) %></td>
        <td><%= cart_item.amount %></td>
-       <td><%= cart_item.item.price * cart_item.amount %></td>
+       <td><%= tax_subtotal(cart_item.item.price,cart_item.amount) %></td>
      </tr>
      <% end %>
    </tbody>
@@ -31,12 +31,7 @@
   </tr>
   <tr>
    <th>商品合計</th>
-   <td><% array = [] %>
-     <% @cart_items.each do |cart_item| %>
-     <% array << cart_item.item.price * cart_item.amount %>
-     <% end %>
-     <%= array.sum %>
-   </td>
+   <td><%=  tax_total_price(@cart_items) %></td>
   </tr>
   <tr>
    <th>
