@@ -2,5 +2,20 @@ ja:
   activerecord:
     attributes:
       customer:
-        last_name: 名字
+        last_name: 名字 
         first_name: 氏名
+        last_name_kana: 名字(カナ)
+        first_name_kana: 氏名(カナ)
+        postal_code: 郵便番号(7桁)
+        addresses: 住所
+        telephone_number: 電話番号 
+        email: メールアドレス
+        id_deleted: 会員情報
+      genre:
+        name: ジャンル名
+      item:
+        genre: ジャンル
+        name: 商品名
+        introduction: 商品説明
+        price: 税抜き価格
+        is_active: 販売ステータス

@@ -16,7 +16,12 @@ class Customer < ApplicationRecord
   validates :first_name_kana, presence: true
   validates :postal_code, presence: true, numericality: {only_integer: true}, length: { in: 6..7 }
   validates :address, presence: true
-  validates :telephone_number,allow_blank: true, numericality: {only_integer: true}, length: { in: 7..8 }
+  # メールアドレス用
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
+  #電話番号用
+  VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
+  validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   validates :id_deleted, inclusion: { in: [true, false] }
   
 end

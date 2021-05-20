@@ -11,6 +11,7 @@
       <% end %>
     </div>
   </div>
+  <%= render partial: 'layouts/flash' %>
   <div class='row hoge'>
    <div class="col-8 offset-1">
     <table class='table'>
@@ -41,10 +42,9 @@
    </div>
   </div>
   <div class='row'>
-    <div class='mx-auto'>
-      <p><%= paginate @items %></p>
-    </div>
-  </div>
+      <div class='mx-auto'>
+        <p><%= paginate @items %></p>
+      </div>
   </div>
 </div>
 

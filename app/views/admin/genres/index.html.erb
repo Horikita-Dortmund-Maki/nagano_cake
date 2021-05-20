@@ -6,6 +6,7 @@
            </nav>
        </div>
      </div>
+       <%= render partial: 'layouts/flash' %>
       <%= form_with model:@genre, url: admin_genres_path, local:true do |f| %>
        <%= render 'layouts/error_messages', model: f.object %>
          <div class="row">
@@ -18,8 +19,8 @@
               </div>
              </div>
              <div class="col-2">
-               <div class="formg-roup ">
-                  <%= f.submit "新規登録", class: "btn btn-success col-xs-12" %>
+               <div class="form-group ">
+                  <%= f.submit "新規登録", class:'btn btn-lg btn-success'  %>
                </div>
               </div>
             </div>
