@@ -7,8 +7,9 @@
         </nav>
     </div>
   </div>
+       <%= render partial: 'layouts/flash' %>
      <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
+       <%= render 'layouts/error_messages', model: f.object %>
        <div class="row">
             <div class="col-3">
               <h4>ジャンル名</h4>

@@ -4,6 +4,7 @@
       <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
         <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
       </nav>
+           <%= render partial: 'layouts/flash' %>
         <table class="table table-borderless">
             <tr>
               <td><lebel>会員ID</lebel></td>
