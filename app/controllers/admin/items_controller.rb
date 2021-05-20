@@ -2,6 +2,9 @@ class Admin::ItemsController < ApplicationController
   def index
     @items = Item.page(params[:page]).per(10)
   end
+  
+
+
 
   def show
     @item = Item.find(params[:id])
@@ -35,6 +38,7 @@ class Admin::ItemsController < ApplicationController
       render :edit
     end
   end
+  
 
   private
 

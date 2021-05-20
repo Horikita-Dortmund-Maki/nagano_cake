@@ -22,7 +22,6 @@ class Customer < ApplicationRecord
   #電話番号用
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
-  validates :id_deleted, inclusion: { in: [true, false] }
   
     
   

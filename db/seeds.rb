@@ -18,10 +18,10 @@ end
 # Item.create!(name: "test品目", introduction:"test品目", price:"11100", is_active: true, image: File.open("./app/assets/images/image1.png"), genre_id: 1)
 
 
-
+#管理者
 Admin.create!(
   name: 'test',
-  email: 'test@test.com',
+  email: 'testtest@test.com',
   password: 'testtest'
   )
   

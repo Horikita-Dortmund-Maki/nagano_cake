@@ -17,11 +17,13 @@ class Public::OrdersController < ApplicationController
   end
   
   def index
-    
+     @orders = Order.page(params[:page]).per(10)
   end
 
   def show
-    
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
+    @order_detail = OrderDetail.find(params[:id])
   end
   
  private
