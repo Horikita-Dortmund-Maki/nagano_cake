@@ -1,0 +1,55 @@
+<div class="container px-5 px-sm-0">
+ <div class="row">
+   <div class="col-md-5">
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+        <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h3>
+      </nav>
+           <%= render partial: 'layouts/flash' %>
+        <table class="table table-borderless">
+            <tr>
+              <td><lebel>会員ID</lebel></td>
+              <td><%= @customer.id %></td>
+            </tr>
+            <tr>
+              <td><label>氏名</label></td>
+              <td><%= @customer.last_name %><%= @customer.first_name %></td>
+            </tr>
+            <tr>
+              <td><lebel>フリガナ</lebel></td>
+              <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+            </tr>
+            <tr>
+              <td><lebel>郵便番号</lebel></td>
+              <td><%= @customer.postal_code %></td>
+            </tr>
+            <tr>
+              <td><lebel>住所</lebel></td>
+              <td><%= @customer.address %></td>
+            </tr>
+            <tr>
+              <td><lebel>電話番号</lebel></td>
+              <td><%= @customer.telephone_number %></td>
+            </tr>
+            <tr>
+              <td><lebel>メールアドレス</lebel></td>
+              <td><%= @customer.email %></td>
+            </tr>
+            <tr>
+            <tr>
+              <td>
+               <lebel>会員ステータス</lebel>
+              </td>
+              <td>
+                <% if @customer.id_deleted == true %>
+                  退会
+                <% else %>
+                  <font color="#008000">有効</font>
+                <% end %>
+              </td>
+            </tr>
+             <td><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
+             <td><%= link_to "注文履歴一覧を見る",admin_orders_path,class:"btn btn-primary" %></td>
+        </table>
+     </div>
+    </div>
+ </div>

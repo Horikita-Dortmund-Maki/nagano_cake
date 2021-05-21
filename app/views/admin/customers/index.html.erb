@@ -1,18 +1,43 @@
  <div class="container">
-  <div class="row">
-    <div class="col-md-6"> 
-      <h3>会員一覧</h3>
-        <table class='table'>
-            <thead>
-              <tr>
-                <th>会員ID</th>
-                <th>氏名</th>
-                <th>メールアドレス</th>
-                <th>ステータス</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <!--ここにeach文が入る-->
-            </tbody>
-        </table>
+   <div class="row">
+      <div class="col-md-3 offset-md-1">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+         <h3>会員一覧</h3>
+         </nav>
+      </div>
+   </div>
+   <div class="row hoge">
+       <div class="col-8 ">
+          <table class='table'>
+              <thead class="thead-light">
+                 <tr>
+                    <th>会員ID</th>
+                    <th>氏名</th>
+                    <th>メールアドレス</th>
+                    <th>ステータス</th>
+                    <th colspan="3"></th>
+                 </tr>
+              </thead>
+              <tbody>
+                <% @customers.each do |customer| %>
+                 <tr>
+                    <td><%= customer.id %></td>
+                    <td><%= link_to admin_customer_path(customer), :style => 'color:black;'  do %>
+                         <%= customer.last_name %><%= customer.first_name %>
+                     <% end %>
+                    </td>
+                    <td><%= customer.email %></td>
+                      <% if customer.id_deleted == true %>
+                        <th><span>退会</span></th>
+                      <% else %>
+                        <th><font color="#008000">有効</font></th>
+                      <% end %>
+                   </tr>
+                  <% end %>
+               </tbody>
+          </table>
+      <div class='p-top__paginate'><%= paginate(@customers) %></div>
+        </diV>
+     </div>
+  </div>
+ 

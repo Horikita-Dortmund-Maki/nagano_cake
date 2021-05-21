@@ -1,14 +1,17 @@
 module ApplicationHelper
+
   #　メソッド定義のために使う
+
 
   def tax_price(price)
     (price * 1.1).round
   end
 
-  def tax_subtotal(price, amount)
-    (price * 1.1 * amount).round
+
+  def tax_subtotal(price,amount)
+    (price * amount * 1.1 ).round
   end
-  
+
   def tax_total_price(price)
     array = []
     price.each do |cart_item|
@@ -17,4 +20,6 @@ module ApplicationHelper
     array.sum.round
   end
 
+
 end
+          

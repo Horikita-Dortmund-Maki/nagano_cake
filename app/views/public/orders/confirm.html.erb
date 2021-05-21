@@ -12,21 +12,35 @@
      </tr>
    </thead>
    <tbody>
+    <% @cart_items.each do |cart_item| %>
      <tr>
-       <td>サンプル</td>
-       <td>サンプル</td>
-       <td>サンプル</td>
-       <td>サンプル</td>
+       <td><%= cart_item.item.name %></td>
+       <td><%= tax_price(cart_item.item.price) %></td>
+       <td><%= cart_item.amount %></td>
+       <td><%= tax_subtotal(cart_item.item.price,cart_item.amount) %></td>
      </tr>
-  
+     <% end %>
    </tbody>
  </table>
  <div class="m-5">
  <table border="1">
 
-  <tr><th>送料</th><td><%= @shopping_cost %></td></tr>
-  <tr><th>商品合計</th><td>サンプル</td></tr>
-  <tr><th>請求金額</th><td>サンプル</td></tr>
+  <tr>
+   <th>送料</th>
+   <td><%= @shopping_cost %></td>
+  </tr>
+  <tr>
+   <th>商品合計</th>
+   <td><%=  tax_total_price(@cart_items) %></td>
+  </tr>
+  <tr>
+   <th>
+      請求金額
+   </th>
+   <td>
+     <%= @total_payment %>
+   </td>
+  </tr>
 
 </table>
  </div>
@@ -37,9 +51,20 @@
 </div>
 <div class="m-5">
 <strong>お届け先</strong>
-<%= @order.address %>
-</div>
-</div>
+ 〒<%= @order.postal_code %>　<%= @order.address %><br>
+　<%= @order.name %>
 
-<%= link_to '注文を確定する', "/thanks", class: "btn btn-sm btn-success" %>
+</div>
+</div>
+<%= form_with model:@order,local:true do |f| %>
+  <%= f.hidden_field :postal_code, value:@order.postal_code  %>
+  <%= f.hidden_field :address, value:@order.address %>
+  <%= f.hidden_field :name, value:@order.name %>
+  <%= f.hidden_field :shopping_cost, value:@shopping_cost %>
+  <%= f.hidden_field :total_payment, value:@total_payment %>
+  <%= f.hidden_field :payment_method, value:@order.payment_method %>
+  <%= f.submit "注文を確定する" ,class: "btn btn-sm btn-success" %>
+<% end %>
+
+
  

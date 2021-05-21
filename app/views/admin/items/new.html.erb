@@ -7,7 +7,9 @@
   </div>
   <div class='row'>
     <div class='mx-auto'>
+        <%= render partial: 'layouts/flash' %>
       <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
+       <%= render 'layouts/error_messages', model: f.object %>
         <div class='form-group'>
           <label for='inputImage'>商品画像</label>
           <%= f.attachment_field :image, placeholder:'写真' %>
@@ -22,7 +24,7 @@
         </div>
         <div class='form-group'>
           <label for='inputGenre'>ジャンル</label>
-          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "選択してください"}, {class: 'btn btn-outline-primary'} %>
         </div>
         <div class='form-group'>
           <label for='inputPrice'>税抜価格</label>
@@ -36,8 +38,13 @@
           <%= f.radio_button :is_active, :false %>
           <%= f.label :is_active, '販売停止中', {value: :false, style: 'display: inline-block;'} %>
         </div>
+<<<<<<< HEAD
+        <div class='form-group hoge'>
+          <%= f.submit '新規登録', class:'btn btn-lg btn-success' %>
+=======
         <div class='form-group'>
           <%= f.submit '新規登録', class:'btn btn-secondary' %>
+>>>>>>> origin/customer
         </div>
       <% end %>
     </div>

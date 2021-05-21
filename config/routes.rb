@@ -33,28 +33,31 @@ Rails.application.routes.draw do
     resources :customers, only: [:show,:edit,:update,:create]
     get "customers/:id/unsubscribe" => "customers#unsubscribe"
     put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
-    post 'orders/new' => 'orders#create'
-    get "orders/confirm" => "orders#confirm"
-    post "orders/confirm" => "orders#confirm"
+
     resources :items, only: [:index,:show,:edit,:update]
     resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] do #:create, :update, :destroy追加(神山)
       collection do
         delete 'destroy_all'
       end
     end
-    resources :orders, only: [:show,:comfirm,:create,:index]
+    
+    resources :orders, only: [:show,:create,:index,:new] do
+     collection do
+       post 'confirm'
+     end
+    end
     resources :order_details, only: [:show,:comfirm,:create,:index]
     resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
 
   namespace :admin do
-    resources :customers, only: [:index,:show,:edit,:update]
-    resources :order_details, only: [:show]
+    resources :customers, only: [:index,:show,:edit]
+    patch 'customers/:id' => 'customers#update'
+    resources :order_details, only: [:show,:update]
     resources :orders, only: [:index,:edit,:update,:show]
-    resources :genres, only: [:index,:edit,:create,:edit]
+    resources :order_details, only: [:show, :update]
+    resources :genres, only: [:index,:edit,:create,]
     patch 'genre/:id' => 'genres#update',as: 'genre'
     resources :items, only: [:index,:show,:edit,:new,:create,:update]
   end
-
-
 end
