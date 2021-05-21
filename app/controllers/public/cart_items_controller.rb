@@ -8,7 +8,7 @@ class Public::CartItemsController < ApplicationController
     # @total = CartItem
     # @total = CartItem.all.sum(:price). #CartItemモデルには価格カラムがないためNG
     # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }　＃このやり方は無駄に難易度高い
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.find_by(params[:id])
   end
 
 
