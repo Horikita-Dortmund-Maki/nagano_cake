@@ -11,11 +11,11 @@
         <body>
           <tr>
             <th>購入者</th>
-            <th><%= @order.name %></th>
+            <th><%= link_to @order.name, admin_customer_path(@order.customer_id), :style => 'color:black' %></th>
           </tr>
           <tr>
             <th>注文日</th>
-            <th><%= @order.created_at %></th>
+            <th><%= @order.created_at.to_s(:datetime_jp) %></th>
           </tr>
           <tr>
             <th>配送先</th>
@@ -52,6 +52,7 @@
             <th>単価（税込）</th>
             <th>数量</th>
             <th>小計</th>
+            <th>製作ステータス</th>
             <th></th>
           </tr>
         </thead>
@@ -62,6 +63,13 @@
               <th><%= Order.item_price_in_tax(order_detail) %></th>
               <th><%= order_detail.amount %></th>
               <th><%= Order.item_price_subtotal(order_detail) %></th>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                <th><%= f.select :making_status, OrderDetail.making_statuses.keys, {include_blank: order_detail.making_status}, class:'btn btn-outline-dark' %></th>
+                <th>
+                  <%= f.submit '更新', class:'btn btn-success' %>
+                </th>
+              <% end %>
+            </tr>
           <% end %>
         </body>
       </table>
@@ -71,13 +79,13 @@
       <table class='table table-borderless'>
         <tbody>
           <tr>
-            <th>請求合計</th>
+            <th>商品合計</th>
             <th>
               <% array = [] %>
               <% @order.order_details.each do |order_detail| %>
                 <% array << order_detail.item.price * 1.1 * order_detail.amount %>
               <% end %>
-              <%= array.sum %><text>円</text>
+              <%= (array.sum).round %><text>円</text>
             </th>
           </tr>
           <tr>
@@ -89,11 +97,12 @@
           <tr>
             <th>請求金額合計</th>
             <th>
-              <%= array.sum + @order.shopping_cost %><text>円</text>
+              <%= (array.sum + @order.shopping_cost).round %><text>円</text>
             </th>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+
 </div>

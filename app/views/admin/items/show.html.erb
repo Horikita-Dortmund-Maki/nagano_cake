@@ -28,18 +28,15 @@
         </tr>
         <tr>
           <th>税込価格<br>(税抜価格）</th>
-<<<<<<< HEAD
-          <th><%= @item.price*1.10 %>(<%= @item.price %>)<text>円</text></th>
-=======
-          <th><%= @item.price*1.08 %>(<%= @item.price %>)<text>円</text></th>
->>>>>>> origin/customer
+
+          <th><%= (@item.price*1.10).round %>(<%= @item.price %>)<text>円</text></th>
         </tr>
         <tr>
           <th>販売ステータス</th>
           <% if @item.is_active == true %>
-            <th>販売中</th>
+            <th class='text-success'>販売中</th>
           <% else %>
-            <th>販売停止中</th>
+            <th class='text-secondary'>販売停止中</th>
           <% end %>
         </tr>
       </table>

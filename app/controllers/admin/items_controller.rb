@@ -8,7 +8,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    #@genre = Genre.find(params[:id])
   end
 
   def new

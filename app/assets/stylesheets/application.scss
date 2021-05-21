@@ -19,6 +19,28 @@
 @import 'font-awesome';
 
 
+// customer
+
+#box{
+  height: 600px;
+}
+.image1 {
+  background-image: url(top1.png);
+  background-color: #FFFABC ;
+}
+.image2 {
+  background-image: url(top2.png);
+}
+.image3 {
+  background-image: url(top3.png);
+}
+
+.navbar-brand {
+  background-image: url(logo.png);
+}
+
+// admin
+
 .col-md-4{
 display: inline-block;
 padding-right: 15px;
@@ -71,4 +93,5 @@ margin: 0 20px;
 .form-grop{
    border-radius: 60px 60px 60px 60px;
 }
+
 
