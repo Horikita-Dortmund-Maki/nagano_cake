@@ -54,6 +54,11 @@
               <th><%= Order.item_price_in_tax(order_detail) %></th>
               <th><%= order_detail.amount %></th>
               <th><%= Order.item_price_subtotal(order_detail) %></th>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                <th>
+                  <%= f.submit '更新', class:'btn btn-success' %>
+                </th>
+              <% end %>
             </tr>
           <% end %>
         </body>
