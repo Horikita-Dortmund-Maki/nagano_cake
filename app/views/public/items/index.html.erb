@@ -1,18 +1,27 @@
+
+
 <h2>商品(ジャンル名)一覧(全<%= @all_items.count %>件)</h2>
 
 <div class="container">
   <div class="row">
     <% @items.each do |item| %>
+      <% if item.is_active == true %>
       <div class="col-md-3">
         <div class="card ">
           <%= attachment_image_tag(item, :image, fallback: "no_image.jpg") %>
           <div class="card-body text-center">
             <h4 class="card-title"><%= item.name %></h4><br>
-            <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+            <!--<#% if item.is_active == true %>-->
+            <!--  <p class="card-is_active bg-success text-white">販売中</p>-->
+              <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+            <!--<#% else %>-->
+            <!--  <p class="card-is_active bg-secondary  text-white">販売休止中</p>-->
+            <!--<#% end %>-->
             <%= link_to '詳細を見る',item_path(item.id), class: "btn btn-outline-secondary btn-block" %>
           </div>
         </div>
       </div>
+      <%end%>
     <%end%>
   <div class='container mt-5'>
     <div class='row'>

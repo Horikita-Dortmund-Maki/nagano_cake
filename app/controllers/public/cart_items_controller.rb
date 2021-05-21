@@ -50,6 +50,8 @@ class Public::CartItemsController < ApplicationController
     #   flash[:alert] = 'カートを空にできませんでした'
     # end
     # redirect_to cart_item_path(current_customer)
+    @order_details = Order.where(order_id: current_customer.id)
+
   end
 
   private
