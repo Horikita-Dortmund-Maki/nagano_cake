@@ -1,8 +1,8 @@
-
 <div class="container">
   <div class="row">
    <div class="mx-auto">
-     <%= flash[:error] %>
+    <!--フラッシュメッセージ-->
+    
     <h4><span style="background-color:#ececec">　ログイン　</span></h4>
     <div class="m-5">
      <h5><span style="background-color:#ececec">　会員の方はこちらからログイン　</span></h3>
@@ -10,11 +10,11 @@
      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
      <div class="m-5">
        <div class="field">
-        <%= f.label :メールアドレス　　　 %>
+        <%= f.label :メールアドレス %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
        </div>
        <div class="field">
-        <%= f.label :パスワード　　　　　 %>
+        <%= f.label :パスワード %>
         <%= f.password_field :password, autocomplete: "current-password" %>
        </div>
      </div>
