@@ -19,18 +19,37 @@ Rails.application.routes.draw do
 
   root :to => "homes#top"
   get "home/about" =>"homes#about"
-  post 'orders/confirm(/:id)', to: 'orders#confirm'
+
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
 
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
+
+
+
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
+    get "customers/:id/unsubscribe" => "customers#unsubscribe"
+    put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
+
     resources :items, only: [:index,:show,:edit,:update]
-    resources :cart_items, only: [:show, :destroy]
-    resources :orders, only: [:show,:comfirm,:create,:index]
+    resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] do #:create, :update, :destroy追加(神山)
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    
+    resources :orders, only: [:show,:create,:index,:new] do
+     collection do
+       post 'confirm'
+     end
+    end
     resources :order_details, only: [:show,:comfirm,:create,:index]
-    resources :addresses, only: [:index,:edit,:destroy,:create,:update]
+    resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
+
   namespace :admin do
     resources :customers, only: [:index,:show,:edit]
     patch 'customers/:id' => 'customers#update'

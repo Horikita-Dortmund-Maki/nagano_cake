@@ -11,6 +11,7 @@
     <div class='col-md-3'>
       <%= attachment_image_tag @item, :image, :fill, 300, 200, format:'jpeg', fallback:'no_image.jpg' %>
     </div>
+    
     <div class='col-md-4 offset-md-1'>
       <table class='table table-borderless'>
         <tr>
@@ -27,6 +28,7 @@
         </tr>
         <tr>
           <th>税込価格<br>(税抜価格）</th>
+
           <th><%= (@item.price*1.10).round %>(<%= @item.price %>)<text>円</text></th>
         </tr>
         <tr>

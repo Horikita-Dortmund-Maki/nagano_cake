@@ -1,11 +1,30 @@
-<li class="list-none">
-    <%= cart_item.product.name %>
-    <%= cart_item.product.price %>
-    <%= form_with(url: update_item_url, method: :post,local: true) do |f| %>
-    <%= f.hidden_field :item_id, value: cart_item.item.id %>
-    <%= f.number_field :quantity ,value: cart_item.quantity%>
-    <%= f.submit "更新", class: "" %>
+<table class='table table-hover table-inverse col-9 table-bordered'>
+  <thead class='thead-light'>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% cart_items.each do |cart_item| %>
+      <tr>
+        <td>
+            <%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+            <%= cart_item.item.name %>
+        </td>
+        <td><%= tax_price(cart_item.item.price) %>円</td>
+        <td>
+          <%= form_with model: cart_item, url: cart_item_path(current_customer), method: :patch do |f| %>
+            <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>
+            <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
+          <% end %>
+        </td>
+        <td><%= tax_subtotal(cart_item.item.price,cart_item.amount) %>円</td>
+        <td><%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: 'btn btn-sm btn-danger' %></td>
+      </tr>
     <% end %>
-    <%= button_to "削除", delete_item_path(item_id: cart_item.item.id), method: :delete,
-                                       data: { confirm: "商品を削除しますか？" } %>
-</li>
+  </tbody>
+</table>
