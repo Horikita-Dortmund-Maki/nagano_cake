@@ -35,13 +35,13 @@
         <% @items.each do |item| %>
           <tr>
             <th><%= item.id %></th>
-            <th><%= link_to item.name, admin_item_path(item.id) %></th>
+            <th><%= link_to item.name, admin_item_path(item.id), :style => 'color:black;' %></th>
             <th><%= item.price %></th>
             <th><%= item.genre.name %></th>
             <% if item.is_active == true %>
-              <th>販売中</th>
+              <th class='text-success'>販売中</th>
             <% else %>
-              <th>販売停止中</th>
+              <th class='text-secondary'>売切れ</th>
             <% end %>
           </tr>
         <% end %>

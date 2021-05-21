@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   #   items_path(resource)
   # end
 
+  
 
   protected
   
@@ -25,6 +26,8 @@ class ApplicationController < ActionController::Base
       items_path(resource)
     end
   end
+
+
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
