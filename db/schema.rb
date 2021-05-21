@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_05_18_100336) do
     t.string "name"
     t.text "introduction"
     t.string "image_id"
-    t.integer "price"
+    t.integer "price", default: 0
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
