@@ -17,3 +17,81 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+
+// customer
+
+#box{
+  height: 600px;
+}
+.image1 {
+  background-image: url(top1.png);
+  background-color: #FFFABC ;
+}
+.image2 {
+  background-image: url(top2.png);
+}
+.image3 {
+  background-image: url(top3.png);
+}
+
+.navbar-brand {
+  background-image: url(logo.png);
+}
+
+// admin
+
+.col-md-4{
+display: inline-block;
+padding-right: 15px;
+padding-left: 15px;
+margin: 0 20px;
+}
+
+.col-4.offset-1.hoge{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0px;
+}
+
+.col-8.offset-4.pamu{
+    margin-top: 30px;
+}
+.customer{
+    display: inline-block;
+    margin: 10px;
+}
+
+.navbar-nav{
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navbar{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+     margin: 0px 0px 30px 0px;
+}
+
+.row{
+    width: 100%;
+    text_align: center;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+.row.hoge{
+    display: flex;
+    justify-content: center;
+}
+
+.form-grop{
+   border-radius: 60px 60px 60px 60px;
+}
+
+

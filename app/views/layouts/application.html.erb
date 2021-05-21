@@ -6,9 +6,9 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
   <body>
     <%= render 'layouts/header' %>
@@ -17,4 +17,15 @@
       </main>
     <%= yield %>
   </body>
+
+  <footer>
+    <div class='container mt-5'>
+      <div class='row'>
+        <div class='mx-auto'>
+          <h1><%= image_tag '/assets/logo2.png', :size => '100x100' %>CopyRight Horikita-Dortmund-Maki.inc<%= image_tag '/assets/logo2.png', :size => '100x100' %></h1>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </html>
