@@ -1,8 +1,8 @@
 <div class='container'>
   <div class='row'>
     <div class='col-md-3'>
-      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <h2>商品詳細</h2>
+      <nav class="navbar navbar-light">
+      <h2 class='title'>Details</h2>
       </nav>
     </div>
   </div>
@@ -11,28 +11,28 @@
     <div class='col-md-3'>
       <%= attachment_image_tag @item, :image, :fill, 300, 200, format:'jpeg', fallback:'no_image.jpg' %>
     </div>
-    
-    <div class='col-md-4 offset-md-1'>
-      <table class='table table-borderless'>
+
+    <div class='col-4 offset-1'>
+      <table class='table table-borderless title'>
         <tr>
-          <th>商品名</th>
+          <th>Name</th>
           <th><%= @item.name %></th>
         </tr>
         <tr>
-          <th>商品説明</th>
+          <th>Introduction</th>
           <th><%= @item.introduction %></th>
         </tr>
         <tr>
-          <th>ジャンル</th>
+          <th>Genre</th>
           <th><%= @item.genre.name %></th>
         </tr>
         <tr>
-          <th>税込価格<br>(税抜価格）</th>
+          <th>Price(in_tax)<br>(no_tax）</th>
 
-          <th><%= (@item.price*1.10).round %>(<%= @item.price %>)<text>円</text></th>
+          <th><%= (@item.price*1.10).round %>(<%= @item.price %>)<text>yen</text></th>
         </tr>
         <tr>
-          <th>販売ステータス</th>
+          <th>Status</th>
           <% if @item.is_active == true %>
             <th class='text-success'>販売中</th>
           <% else %>
@@ -43,8 +43,8 @@
     </div>
   </div>
   <div class='row'>
-    <div class='mx-auto'>
-      <%= link_to '編集する', edit_admin_item_path(@item.id), class:'btn btn-lg btn-success' %>
+    <div class='mx-auto title'>
+      <%= link_to 'Edit', edit_admin_item_path(@item.id), class:'btn btn-lg btn-dark' %>
     </div>
   </div>
 </div>

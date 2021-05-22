@@ -403,6 +403,7 @@ button.btn {
 .img_wrap img:hover{
   transform: scale(1.2) rotate(9deg);
   transition-duration: 0.5s;
+}
 // 管理者ページ共通
 .title {
      font-family: 'Vollkorn', serif;
@@ -417,11 +418,13 @@ button.btn {
         border: none;
         outline: none;
         border-bottom: solid;
+        background-color: transparent;
     }
     .length {
         width: 400px;
     }
 }
+
 // 管理者ページItem#index
 
 .bodydesign {
@@ -453,6 +456,7 @@ button.btn {
   .pagination>li>a {
     border: none;     /*枠線をなくす*/
     color: #000000;   /*文字の色を変える*/
+    font-family: 'Vollkorn', serif;
   }
 
   /* 表示しているページ番号のデザイン */
