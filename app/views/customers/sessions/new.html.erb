@@ -3,18 +3,18 @@
    <div class="mx-auto">
     <!--フラッシュメッセージ-->
     
-    <h4><span style="background-color:#ececec">　ログイン　</span></h4>
+     <h1 class="heading08"><span>Log in</span>ログイン</h1>
     <div class="m-5">
-     <h5><span style="background-color:#ececec">　会員の方はこちらからログイン　</span></h3>
+     <h5><span style="background-color:#99FFCC">　会員の方はこちらからログイン　</span></h3>
     </div>
      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
      <div class="m-5">
        <div class="field">
-        <%= f.label :メールアドレス %>
+        <%= f.label :メールアドレス, class: "under"  %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
        </div>
        <div class="field">
-        <%= f.label :パスワード %>
+        <%= f.label :パスワード, class: "under"  %>
         <%= f.password_field :password, autocomplete: "current-password" %>
        </div>
      </div>
@@ -26,10 +26,10 @@
      <% end %>
  
      <div class="m-5">
-      <h5><span style="background-color:#ececec">　会員登録がお済みでない方　</span></h3>
+      <h5><span style="background-color:#99FFCC">　会員登録がお済みでない方　</span></h3>
      </div>
      <div class="text-center">
-       <%= link_to 'こちら',new_customer_registration_path %> から新規登録を行ってください。
+       <%= link_to 'こちら',new_customer_registration_path,class: "btn btn-info" %> から新規登録を行ってください。
      </div>
     </div>
   </div>

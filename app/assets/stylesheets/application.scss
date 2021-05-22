@@ -19,24 +19,58 @@
 @import 'font-awesome';
 
 
-// customer
-
-#box{
+// トップページ
+.box{
   height: 600px;
-}
-.image1 {
-  background-image: url(top1.png);
-  background-color: #FFFABC ;
-}
-.image2 {
-  background-image: url(top2.png);
-}
-.image3 {
-  background-image: url(top3.png);
+  width: 100%;
 }
 
-.navbar-brand {
-  background-image: url(logo.png);
+.container.mt-5{
+    font-family: 'Comic Sans MS', cursive;
+}
+
+h1 {  
+   font-family: cursive;
+    font-size: 40px;
+}
+
+
+
+
+h2{
+    font-family: 'arial black';
+}
+
+
+.actions{
+    margin: 20px;
+}
+
+.table td{
+    padding: 0.75rem;
+    border-top: 1px solid #dee2e6;
+}
+// 見出し
+
+.heading08 {
+	font-size: 26px;
+}
+
+.heading08 span {
+	display: flex;
+	align-items: center;
+	color: #498ee0;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.heading08 span::before {
+	content: '';
+	display: inline-block;
+	margin-right: 20px;
+	width: 40px;
+	height: 1px;
+	background-color: #498ee0;
 }
 
 // admin
@@ -94,4 +128,279 @@ margin: 0 20px;
    border-radius: 60px 60px 60px 60px;
 }
 
+.under {
+   background: linear-gradient(transparent 80%, #a8eaff 70%)
+}
 
+body{
+    background: #f5f2e7;
+}
+
+footer{
+font-family: 'Amatic SC', cursive;
+font-size: 20px;
+}
+
+// header
+
+$yellow:#EEFFFF;
+$blue:#EEFFFF;
+$gradient-bg: linear-gradient(90deg, $blue, $yellow);
+$transparent-gray: rgba(0, 0, 0, 0.3);
+$transparent-white: rgba(255, 255, 255, 0.15);
+
+
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $gradient-bg;
+  font-family: "Montserrat", sans-serif;
+  color: #000000;
+
+  // For codepen only
+  height: 100vh;
+}
+
+.menu {
+  ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &:first-child {
+      width: 100%;
+      max-width: 960px;
+      margin: 1rem auto 0 auto;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      align-items: center;
+      box-shadow: 0px 3px 8px $transparent-gray;
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 2px solid $blue;
+    position: relative;
+    transition: background 0.3s ease-in-out;
+
+    &:nth-child(1) > a::before {
+      content: "\f015";
+    }
+
+    &:nth-child(2) > a::before {
+      content: "\f05a";
+    }
+
+    &:nth-child(3) > a::before {
+      content: "\f0ad";
+    }
+
+    &:nth-child(4) > a::before {
+      content: "\f2e7";
+    }
+
+    &:nth-child(5) > a::before {
+      content: "\f007";
+    }
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) > a::before {
+        font-family: "Font Awesome 5 Free";
+        font-size: 1.2rem;
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: 900;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        line-height: 1;
+        color: $blue;
+
+        @media (min-width: 768px) {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+
+
+      .menu-item {
+        border-color: $transparent-white;
+
+        a::before {
+          content: "";
+        }
+
+        &:first-child {
+          border: 0;
+        }
+      }
+    }
+
+    &:hover,
+    &.active {
+      border-top: 2px solid $yellow;
+      background-color: $transparent-white;
+
+      a::before {
+        color: black;
+      }
+    }
+
+
+    a {
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #000000;
+      text-decoration: none;
+      text-transform: uppercase;
+      height: 100%;
+      width: 100%;
+      padding: 1.5em 1em;
+
+      @media (min-width: 768px) {
+        font-size: 1rem;
+      }
+    }
+    
+  }
+  
+// snsボタン
+a.btn-sns {
+  font-size: 2.4rem;
+  line-height: 50px;
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+
+  letter-spacing: 0;
+
+  color: #fff;
+  border-radius: 50%;
+}
+
+a.btn-sns:hover {
+  color: #fff;
+}
+
+
+
+a.btn-sns {
+  font-size: 2.4rem;
+  line-height: 50px;
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+
+  letter-spacing: 0;
+
+  color: #fff;
+  border-radius: 50%;
+}
+
+a.btn-sns:hover {
+  color: #fff;
+}
+
+a.btn-sns--twitter {
+  background: #1da1f2;
+}
+
+
+a.btn-sns {
+  font-size: 2.4rem;
+  line-height: 50px;
+
+  width: 50px;
+  height: 50px;
+  padding: 0;
+
+  letter-spacing: 0;
+
+  color: #fff;
+  border-radius: 50%;
+}
+
+a.btn-sns:hover {
+  color: #fff;
+}
+
+a.btn-sns--instagram {
+  background: #d6249f;
+  background: -webkit-linear-gradient(45deg, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  background: linear-gradient(45deg, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+
+*,
+*:before,
+*:after {
+ padding: 6px;
+}
+
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 17px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+  .fal, .fad, .fab {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+
+// 画像用
+
+.img_wrap{
+  border: 1px solid #ddd;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.img_wrap img{
+  width: 100%;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+.img_wrap img:hover{
+  transform: scale(1.2) rotate(9deg);
+  transition-duration: 0.5s;
+}

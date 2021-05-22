@@ -1,36 +1,40 @@
-<div id="cart_item_change"> <!-- 非同期通信の指定された箱 -->
-<table class='table table-hover table-inverse col-9 table-bordered'>
-  <thead class='thead-light'>
-    <tr>
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% cart_items.each do |cart_item| %>
-      <tr id="cart_item_<%= cart_item.id %>">
-        <td>
-            <%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
-            <%= cart_item.item.name %>
-        </td>
-
-        <td><%= tax_price(cart_item.item.price) %>円</td> <!-- 単価 -->
-
-        <td>
-          <%= form_with model: cart_item, url: cart_item_path(current_customer), remote: true , method: :patch do |f| %>
-            <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>
-            <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
-          <% end %>
-        </td>
-        <td><%= tax_subtotal(cart_item.item.price, cart_item.amount) %>円</td> <!-- 小計 -->
-        <td>
-          <%= link_to "削除する", cart_item_path(cart_item), method: :delete, remote: true, data: {confirm: '商品を削除して本当によろしいですか？'}, class: 'btn btn-sm btn-danger' %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <div class="container">
+    <div class="row">
+       <div class="col-11">
+          <div id="cart_item_change"> <!-- 非同期通信の指定された箱 -->
+            <table class='table'>
+              <thead class="table-primary">
+                <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th colspan="5"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% cart_items.each do |cart_item| %>
+                  <tr id="cart_item_<%= cart_item.id %>">
+                    <td>
+                        <%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+                        <%= cart_item.item.name %>
+                    </td>
+                    <td><%= tax_price(cart_item.item.price) %>円</td> <!-- 単価 -->
+                    <td>
+                      <%= form_with model: cart_item, url: cart_item_path(current_customer), remote: true , method: :patch do |f| %>
+                        <%= f.select :amount, ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] %>
+                        <%= f.submit "変更", class: 'btn btn-sm btn-success' %>
+                      <% end %>
+                    </td>
+                    <td><%= tax_subtotal(cart_item.item.price, cart_item.amount) %>円</td> <!-- 小計 -->
+                    <td>
+                      <%= link_to "削除する", cart_item_path(cart_item), method: :delete, remote: true, data: {confirm: '商品を削除して本当によろしいですか？'}, class: 'btn btn-sm btn-danger' %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+       </div>
+    </div>
 </div>

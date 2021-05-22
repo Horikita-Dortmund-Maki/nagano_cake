@@ -1,16 +1,15 @@
 <div class='container'>
   <div class='row'>
     <div class='md-col-4'>
-      <h3>注文履歴詳細</h3>
+       <h1 class="heading08"><span>Order Deitals</span>注文履歴</h1>
     </div>
   </div>
-
   <div class='row'>
     <div class='md-col-2'>
       <table class='table table-borderless'>
         <body>
           <tr>
-            <th>購入日</th>
+            <th >購入日</th>
             <th><%= @order.created_at %></th>
           </tr>
           <tr>
@@ -34,11 +33,10 @@
   </div>
 </div>
 
-<div class='container'>
-  <div class='row align-items-end'>
-    <div class='col-md-8'>
+  <div class='row'>
+    <div class='col-7 offset-1'>
       <table class='table'>
-        <thead>
+        <thead class="table-primary">
           <tr>
             <th>商品名</th>
             <th>単価（税込）</th>
@@ -59,13 +57,12 @@
         </body>
       </table>
     </div>
-
-    <div class='col-md-3 offset-md-1'>
-      <table class='table table-borderless'>
+    <div class='col-3 offset-1'>
+      <table class="table table-bordered">
         <tbody>
           <tr>
-            <th>商品合計</th>
-            <th>
+            <th class="bg-light">商品合計</th>
+            <th style="background: #FFFFCC;">
               <% array = [] %>
               <% @order.order_details.each do |order_detail| %>
                 <% array << order_detail.item.price * 1.1 * order_detail.amount %>
@@ -74,14 +71,14 @@
             </th>
           </tr>
           <tr>
-            <th>送料</th>
-            <th>
+            <th class="bg-light">送料</th>
+            <th style="background: #FFFFCC;">
               <%= @order.shopping_cost %><text>円</text>
             </th>
           </tr>
           <tr>
-            <th>請求金額合計</th>
-            <th>
+            <th class="bg-light">請求金額合計</th>
+            <th style="background: #FFFFCC;">
               <%= array.sum + @order.shopping_cost %><text>円</text>
             </th>
           </tr>
