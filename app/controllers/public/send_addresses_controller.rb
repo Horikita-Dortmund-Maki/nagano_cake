@@ -3,8 +3,11 @@ class Public::SendAddressesController < ApplicationController
   def create
     @send_address = SendAddress.new(send_address_params)
     @send_address.customer_id = current_customer.id
-    @send_address.save
-    redirect_to send_addresses_path
+    if @send_address.save
+    redirect_to send_addresses_path, success: "作成しました"
+    else 
+     redirect_to send_addresses_path,danger:  '作成に失敗しました。'
+    end
   end
   
   def index
