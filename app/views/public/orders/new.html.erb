@@ -4,8 +4,8 @@
   </div>
   <div class="row ">
     <div class="col-1"></div>
-      <div class="col-7">
-          <h4>支払方法</h4>
+      <div class="col-3">
+          <h4 class="border border-primary" style="text-align: center; background-color: blanchedalmond;">支払方法</h4>
     <%= form_with model:@order, url: confirm_orders_path,local: true do |f| %>
            <div class="radio-inline">
             <%= f.radio_button :payment_method, :クレジットカード, checked: "checked" %>
@@ -20,8 +20,8 @@
    </div>
    <div class="row">
       <div class="col-1"></div>
-        <div class="col-7">
-             <h4>お届け先</h4>
+        <div class="col-">
+             <h4 class="border border-primary" style="text-align: center; background-color: blanchedalmond;">お届け先</h4>
              <div class="radio-inline">
               <%= f.radio_button :address_select,0, checked: "checked" %>
               <%= f.label :address_select, "ご自身の住所" %><br>
@@ -61,7 +61,7 @@
           </div>
         <div class="row hoge">
            <div class="col-3">
-              <%= f.submit "確認画面へ進む" , class:"btn btn-primary" %>
+              <%= f.submit "確認画面へ進む" , class: "btn btn-outline-info" %>
        <% end %>
        </div>
     </div>
