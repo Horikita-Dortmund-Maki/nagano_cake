@@ -3,44 +3,44 @@
        <h1 class="heading08"><span>Send Address</span>配送先一覧</h1>
   </div>
   <div class="row">
-    <div class="col-3"></div>
-     <div class="col-7">
+    <div class="col-2"></div>
+     <div class="col-8">
       <%= render partial: 'layouts/flash' %>
    <%= form_with model:@customer, local:true do |f| %>
       <%= render 'layouts/error_messages', model: f.object %>
         <table class="table">
                   <tr>
-                    <td><lebel>氏名</lebel></td>
+                    <td><lebel class="under">氏名</lebel></td>
                     <td><%= f.text_field :last_name,class:"form-control"  %></td>
                     <td><%= f.text_field :first_name,class:"form-control"  %></td>
                    </tr>
                   <tr>
-                    <td><lebel>フリガナ</lebel></td>
+                    <td><lebel class="under">フリガナ</lebel></td>
                     <td><%= f.text_field :last_name_kana,class:"form-control" %></td>
                     <td><%= f.text_field :first_name_kana,class:"form-control"  %></td>
                   </tr>
                   <tr>
-                    <td><lebel>郵便番号</lebel></td>
+                    <td><lebel class="under">郵便番号</lebel></td>
                     <td><%= f.text_field :postal_code, class:"form-control"  %></td>
                   </tr>
                   <tr>
-                     <td><lebel>住所</lebel></td>
+                     <td><lebel class="under">住所</lebel></td>
                      <td colspan="2"><%= f.text_field :address,class:"form-control" %></td>
                   </tr>
                   <tr>
-                     <td><lebel>電話番号</lebel></td>
+                     <td><lebel class="under">電話番号</lebel></td>
                      <td><%= f.telephone_field :telephone_number,class:"form-control"  %></td>
                   </tr>
                   <tr>
-                     <td><lebel>メールアドレス</lebel></td>
+                     <td><lebel class="under">メールアドレス</lebel></td>
                      <td><%= f.email_field :email,class:"form-control"  %></td>
                   </tr>
            </table>
           <div class="form-group">
-          <%= f.submit "編集内容を保存",class: 'btn btn-sm btn-success' %>
+          <%= f.submit "編集内容を保存",class: "btn btn-outline-dark"%>
           </div>
       <% end %>
-      <%= link_to '退会する', 'unsubscribe', class: "btn btn-sm btn-warning " %>
+      <%= link_to '退会する', 'unsubscribe', class: "btn btn-outline-warning" %>
     </div>
   </div>
 </div>

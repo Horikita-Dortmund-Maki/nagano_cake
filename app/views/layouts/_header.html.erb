@@ -1,34 +1,33 @@
 <header>
-    <div class="container">
-        <% if customer_signed_in? %>
-          <nav class="menu">
-            <ol>
-              <li class="menu-item active"><%= link_to ' マイページ',customer_path(current_customer)%></li>
-              <li class="menu-item active"><%= link_to ' 商品一覧',items_path %></li>
-              <li class="menu-item active"><%= link_to ' カート',cart_item_path(current_customer) %></li>
-              <li class="menu-item active"><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>
-            </ol>
-          </nav>
-        <% elsif admin_signed_in? %>
-        <nav class="menu">
-           <ol>
-              <li class="menu-item active"><%= link_to '商品一覧',admin_items_path %></li>
-              <li class="menu-item active"><%= link_to '会員一覧',admin_customers_path %></li>
-              <li class="menu-item active"><%= link_to '注文履歴一覧',admin_orders_path %></li>
-              <li class="menu-item active"><%= link_to 'ジャンル一覧',admin_genres_path%></li>
-              <li class="menu-item active"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            </ol>
-          </nav>
-        <% else %>
-         <nav class="menu">
-           <ol>
-              <li class="menu-item active"><%= link_to ' About',home_about_path %></li>
-              <li class="menu-item active"><%= link_to ' 商品一覧',items_path %></li>
-              <li class="menu-item active"><%= link_to ' 新規登録', new_customer_registration_path %></li>
-              <li class="menu-item active"><%= link_to ' ログイン', new_customer_session_path %></li>
-            </ol>
-          </nav>
-        <% end %>
+    <% if customer_signed_in? %>
+      <nav class="menu">
+        <ol>
+          <li class="menu-item active"><%= link_to ' マイページ',customer_path(current_customer)%></li>
+          <li class="menu-item active"><%= link_to ' 商品一覧',items_path %></li>
+          <li class="menu-item active"><%= link_to ' カート',cart_item_path(current_customer) %></li>
+          <li class="menu-item active"><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>
+        </ol>
+      </nav>
+    <% elsif admin_signed_in? %>
+    <nav class="menu">
+       <ol>
+          <li class="menu-item active"><%= link_to '商品一覧',admin_items_path %></li>
+          <li class="menu-item active"><%= link_to '会員一覧',admin_customers_path %></li>
+          <li class="menu-item active"><%= link_to '注文履歴一覧',admin_orders_path %></li>
+          <li class="menu-item active"><%= link_to 'ジャンル一覧',admin_genres_path%></li>
+          <li class="menu-item active"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
+        </ol>
+      </nav>
+    <% else %>
+     <nav class="menu">
+       <ol>
+          <li class="menu-item active"><%= link_to ' About',home_about_path %></li>
+          <li class="menu-item active"><%= link_to ' 商品一覧',items_path %></li>
+          <li class="menu-item active"><%= link_to ' 新規登録', new_customer_registration_path %></li>
+          <li class="menu-item active"><%= link_to ' ログイン', new_customer_session_path %></li>
+        </ol>
+      </nav>
+    <% end %>
 
         <!--</ul>-->
         <!--サーチ機能-->
@@ -39,6 +38,5 @@
               <!--<#%= f.search_field :name_cont,class:'search',placeholder: 'Search' %>-->
               <!--<%# end %>-->
              <!--</div>-->
-         <!--</div>-->
-     </div>
+
 </header>

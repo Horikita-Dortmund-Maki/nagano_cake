@@ -404,3 +404,29 @@ button.btn {
   transform: scale(1.2) rotate(9deg);
   transition-duration: 0.5s;
 }
+
+
+.flat.border2 {
+  position: relative;
+  text-align: center;
+  /* 中央揃え */
+  display: block;
+  margin: 0 auto;
+  /* 幅の指定 */
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+  padding: 10px;
+  /* 色の指定 */
+  background: linear-gradient(135deg, #ffd900, #ff9300);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.flat.border2:hover {
+  background: repeating-linear-gradient(135deg, rgba(255,255,255, 0.3), rgba(255,255,255, 0.3) 2px, transparent 2px, transparent 4px), linear-gradient(135deg, #ffd900, #ff9300);
+}
+.flat.border2:active, .flat.border2:focus {
+  top: 2px;
+}
