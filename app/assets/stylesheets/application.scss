@@ -94,4 +94,88 @@ margin: 0 20px;
    border-radius: 60px 60px 60px 60px;
 }
 
+// 管理者ページ共通
+.title {
+     font-family: 'Vollkorn', serif;
+     letter-spacing: 3px;
+}
+// 管理者ページItem#new
+.inputframe {
+    border: none;
+}
+.newitem {
+    input {
+        border: none;
+        outline: none;
+        border-bottom: solid;
+    }
+    .length {
+        width: 400px;
+    }
+}
+// 管理者ページItem#index
 
+.bodydesign {
+
+  tr:nth-child(2n) {
+    background-color: #dcdcdc;
+  }
+
+  tr {
+    text-align: center;
+  }
+  th {
+    text-align: center;
+  }
+
+}
+
+.tfoot {
+  background-color: #000000;
+}
+
+.button_text {
+  font-size: 25px;
+}
+// pagination
+.pagination-design {
+
+  /*ページネーション自体のデザイン*/
+  .pagination>li>a {
+    border: none;     /*枠線をなくす*/
+    color: #000000;   /*文字の色を変える*/
+  }
+
+  /* 表示しているページ番号のデザイン */
+  .pagination>.active>a {
+    background: #000000;     /*背景の色を変える*/
+    border-radius: 15px;     /*角を丸くする*/
+  }
+
+  /*ホバー時のデザイン*/
+  .pagination>li>a:hover {
+    border-radius: 15px;    /*角を丸くする*/
+  }
+}
+
+// adminのgenre#edit
+.space {
+  padding-bottom: 50px;
+}
+
+// adminのorder/show
+.bodydesign-orderdetail {
+
+  tr {
+    background-color: #dcdcdc;
+    text-align: center;
+  }
+  th {
+    text-align: center;
+  }
+
+}
+
+.title-orderdetail {
+     font-family: 'Vollkorn', serif;
+}

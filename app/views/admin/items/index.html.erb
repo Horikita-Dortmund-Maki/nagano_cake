@@ -1,21 +1,13 @@
 <div class='container'>
-<<<<<<< HEAD
   <div class='row '>
     <div class='col-md-3 offset-md-1'>
-      <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-       <h3>商品一覧</h3>
+      <nav class="navbar navbar-light" >
+       <h2 class='title'>Items</h2>
       </nav>
     </div>
     <div class='col-3 offset-5'>
-=======
-  <div class='row'>
-    <div class='md-col-3 mr-auto'>
-      <h2>商品一覧</h2>
-    </div>
-    <div class='col-auto'>
->>>>>>> origin/customer
-      <%= link_to new_admin_item_path, class:"btn btn-outline-dark rounded-circle p-0 ", :style => "width:2rem;height:2rem;" do %>
-      +
+      <%= link_to new_admin_item_path, class:"btn btn-outline-dark rounded-circle p-0 button_text", :style => "width:3rem;height:3rem;" do %>
+      <text class='button_text'>+</text>
       <% end %>
     </div>
   </div>
@@ -23,20 +15,20 @@
   <div class='row hoge'>
    <div class="col-8 offset-1">
     <table class='table'>
-      <thead class="thead-light">
-          <th>商品ID</th>
-          <th>商品名</th>
-          <th>税抜き価格</th>
-          <th>ジャンル</th>
-          <th>ステータス</th>
+      <thead class="thead-light title bodydesign">
+          <th class='text-white bg-dark'>ID</th>
+          <th class='text-white bg-dark'>Name</th>
+          <th class='text-white bg-dark'>Price(no_tax)</th>
+          <th class='text-white bg-dark'>Genre</th>
+          <th class='text-white bg-dark'>Status</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class='title bodydesign'>
         <% @items.each do |item| %>
           <tr>
             <th><%= item.id %></th>
             <th><%= link_to item.name, admin_item_path(item.id), :style => 'color:black;' %></th>
-            <th><%= item.price %></th>
+            <th class='textalign'><%= item.price %></th>
             <th><%= item.genre.name %></th>
             <% if item.is_active == true %>
               <th class='text-success'>販売中</th>
@@ -47,17 +39,12 @@
         <% end %>
       </tbody>
     </table>
-<<<<<<< HEAD
    </div>
   </div>
   <div class='row'>
-      <div class='mx-auto'>
+      <div class='mx-auto pagination-design'>
         <p><%= paginate @items %></p>
       </div>
   </div>
 </div>
 
-=======
-  </div>
-</div>
->>>>>>> origin/customer
