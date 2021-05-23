@@ -32,26 +32,26 @@
   <div class="container">
     <div class="row">
       <% @items.each do |item| %>
+        <% if item.is_active == true %>
         <div class="col-md-3">
-          <div class="card">
-            <%= attachment_image_tag(item, :image, fallback: "no_image.jpg") %>
-            <div class="card-body text-center">
-              <h4 class="card-title"><%= item.name %></h4><br>
-              <!--<#% if item.is_active == true %>-->
-              <!--  <p class="card-is_active bg-success text-white">販売中</p>-->
-                <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
-              <!--<#% else %>-->
-              <!--  <p class="card-is_active bg-secondary  text-white">販売休止中</p>-->
-              <!--<#% end %>-->
-              <%= link_to '詳細を見る',item_path(item.id), class: "btn btn-outline-secondary btn-block" %>
+          <div class="card border-0">
+            <%= link_to item_path(item.id) do %>
+            <div class="item_img">
+              <%= attachment_image_tag(item, :image, height: "150", fallback: "no_image.jpg") %>
             </div>
+            <div class="card-body text-center">
+              <p class="card-title"><%= item.name %></p>
+              <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+            </div>
+            <% end %>
           </div>
         </div>
+        <%end%>
       <%end%>
     </div>
   </div>
  <div class="text-right">
     <%= link_to 'and more... >', items_path ,class: "btn btn-info"%>
   </div>
-  
+
 </div>

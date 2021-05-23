@@ -1,6 +1,6 @@
 <!--$("#cart_item_change").html("<#%= j(render "public/cart_items/cart_item", cart_items: @cart_items) %>");-->
 
 $("#cart_item_<%= @cart_item.id %>").remove();
-<!--$(".total").change("<#%= j(tax_total_price(@cart_items) %>");-->
-<!--var array = $(#sample1).val();-->
+$('#cart-total').html("<%= tax_total_price(@cart_items)%>円");
+
 

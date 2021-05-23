@@ -452,7 +452,6 @@ button.btn {
         width: 400px;
     }
 }
-
 // 管理者ページItem#index
 
 .bodydesign {
@@ -519,4 +518,19 @@ button.btn {
 
 .title-orderdetail {
      font-family: 'Vollkorn', serif;
+}
+
+
+.card {
+  background-color:transparent;
+}
+
+.item_img img:hover{
+  transform: scale(1.2) rotate(9deg);
+  transition-duration: 0.5s;
+}
+.item_img img{
+  width: 100%;
+  cursor: pointer;
+  transition-duration: 0.5s;
 }

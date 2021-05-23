@@ -19,7 +19,7 @@
         <tbody>
           <tr>
             <td class="bg-light">合計金額</td>
-            <td class="total" style="background: #FFFFCC;"><%=  tax_total_price(@cart_items)%>円</td>
+            <td id="cart-total" style="background: #FFFFCC;"><%= tax_total_price(@cart_items)%>円</td>
           </tr>
         </tbody>
       </table>
