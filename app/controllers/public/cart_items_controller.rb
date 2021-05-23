@@ -8,19 +8,20 @@ class Public::CartItemsController < ApplicationController
     # @total = CartItem
     # @total = CartItem.all.sum(:price). #CartItemモデルには価格カラムがないためNG
     # @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }　＃このやり方は無駄に難易度高い
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = CartItem.find_by(params[:id])
   end
 
 
     # アイテムの追加
   def create
-    if @cart_item = current_customer.cart_items.build(cart_item_params)
-      flash[:notice] = 'カートに商品を追加しました'
-    else
-      flash[:alert] = '商品の数量を指定してください' #課題点ここを渡された数字で判別できるようにしたい！
-    end
-    @cart_item.save
-    redirect_to cart_item_path(current_customer)
+     @cart_item = current_customer.cart_items.build(cart_item_params)
+      if  @cart_item.save
+          redirect_to cart_item_path(current_customer), success: "カートに商品を追加しました"
+      else
+           flash.now[:danger] = '商品を指定してください。'#課題点ここを渡された数字で判別できるようにしたい！
+           render template: "public/items/show"
+      end
+    
   end
 
 

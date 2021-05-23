@@ -1,29 +1,24 @@
-<div class="container customer">
-  <div class="row ">
-      <div class="col-2"></div>
-    <div class="col-4">
-        <nav class="navbar navbar-light bg-light">
-         <h3>ジャンル編集</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+        <nav class="navbar navbar-light">
+          <h2 class='title'>Editing Genre</h2>
         </nav>
     </div>
   </div>
-       <%= render partial: 'layouts/flash' %>
-     <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
-       <%= render 'layouts/error_messages', model: f.object %>
-       <div class="row">
-            <div class="col-3">
-              <h4>ジャンル名</h4>
-             </div>
-             <div class="col-3">
-             <div class="form-group">
-              <%= f.text_field :name,class:"col-xs-12" %>
-            </div>
-            </div>
-            <div class="col-3">
-            <div class="form-group">
-              <%= f.submit "変更を保存", class: "btn btn-success" %>
-            </div>
-            </div>
+  <%= render partial: 'layouts/flash' %>
+  <div class='row hoge'>
+    <div class='newitem'>
+      <%= form_for(@genre, url: admin_genre_path(@genre)) do |f| %>
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="form-group title">
+          <label for='inputName'>Name</label>
+          <%= f.text_field :name,class:"col-xs-12" %>
         </div>
-     <% end %>
+        <div class="form-group hoge title">
+          <%= f.submit 'Submit', class: "btn btn-dark" %>
+        </div>
+      <% end %>
+    </div>
   </div>
+<div>

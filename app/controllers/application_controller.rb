@@ -23,9 +23,10 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_items_path(resource)
     when Customer
-      items_path(resource)
+      items_path(resource)  
     end
   end
+  
 
 
 
