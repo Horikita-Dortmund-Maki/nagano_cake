@@ -1,3 +1,2 @@
-<!--$("#cart_item_change").html("<#%= j(render "public/cart_items/cart_item", cart_items: @cart_items) %>");-->
-
-$("#cart_item_<%= @cart_item.id %>").remove();
+$('#cart-subtotal-<%= @cart_item.id %>').html("<%= tax_subtotal(@cart_item.item.price, @cart_item.amount) %>円");
+$('#cart-total').html("<%= tax_total_price(@cart_items)%>円");
