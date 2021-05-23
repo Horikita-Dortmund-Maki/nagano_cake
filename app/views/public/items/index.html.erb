@@ -6,7 +6,6 @@
   <div class="row">
     <% @items.each do |item| %>
       <% if item.is_active == true %>
-
       <div class="col-md-3">
         <div class="card border-0">
           <%= link_to item_path(item.id) do %>
@@ -15,13 +14,11 @@
           </div>
           <div class="card-body text-center">
             <p class="card-title"><%= item.name %></p>
-              <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+            <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
           </div>
           <% end %>
         </div>
       </div>
-
-
       <%end%>
     <%end%>
   <div class='container mt-5'>
