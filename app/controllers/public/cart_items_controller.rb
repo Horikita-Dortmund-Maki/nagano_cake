@@ -14,7 +14,7 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = current_customer.cart_items.build(cart_item_params)
     @cart_items = current_customer.cart_items.all
-    unless @cart_item.amount == nil
+    unless @cart_item.amount == nil  #@cart_item.amountがNilではないときに
       @cart_items.each do |cart_item|
         if cart_item.item.id == @cart_item.item.id
           new_amount = cart_item.amount + @cart_item.amount
@@ -25,7 +25,7 @@ class Public::CartItemsController < ApplicationController
       end
     else @cart_item.save
       redirect_to request.referer, danger: "数量を指定してください。"
-      # flash[:danger] = '数量を指定してください。'#課題点ここを渡された数字で判別できるようにしたい！
+      #redirect_to request.referer＝一つ前の画面に戻る、　danger: ""　で　flash[:danger] = ""　と同じ
     end
 
   end
