@@ -1,25 +1,7 @@
----
-title: 'Project documentation template'
-disqus: hackmd
----
 
 ながのCAKE
 ===
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
-
-# 見出し
-
-[TOC]
-
-## 操作説明
-
-管理者側でのログイン方法
-
-1. /admins/sign_in にアクセス
-2. メールアドレス test@test.com
-3. パスワード    testtest
-4. "Sign in"　クリック
-
 
 作成背景（User story）
 ---
@@ -49,6 +31,15 @@ bootstrap4をフレームワークは使用
 
 
 ユーザーからの注文内容を管理したり、商品を追加、編集できる
+
+## 操作説明
+
+管理者側でのログイン方法
+
+1. /admins/sign_in にアクセス
+2. メールアドレス test@test.com
+3. パスワード    testtest
+4. "Sign in"　クリック
 
 ER図
 ---
