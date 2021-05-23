@@ -27,7 +27,7 @@
           </tr>
           <tr>
             <th>Order Status</th>
-            <%= form_with model:@Order, local:true, method: :patch do |f| %>
+            <%= form_with model:@order, url: admin_order_path(@order.id), local:true, method: :patch do |f| %>
               <th>
                 <%= f.select :status, Order.statuses.keys, {include_blank: @order.status}, class:'btn btn-outline-dark' %>
               </th>
