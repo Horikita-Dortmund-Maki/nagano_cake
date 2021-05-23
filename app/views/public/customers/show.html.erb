@@ -37,11 +37,11 @@
             </table>
           <h4>配送先</h4>
           <%= link_to '一覧を見る', send_addresses_path, class: "btn btn-outline-info" %>
-          
+
           <h4>注文履歴</h4>
-          <%= link_to '編集する', orders_path, class: "btn btn-outline-info" %>
+          <%= link_to '編集する', orders_path, data: {"turbolinks" => false}, class: "btn btn-outline-info" %>
        </div>
     </div>
  </div>
-     
-     
+
+
