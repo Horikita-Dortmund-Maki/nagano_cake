@@ -1,24 +1,74 @@
-# README
+---
+title: 'Project documentation template'
+disqus: hackmd
+---
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ながのCAKE
+===
+長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト
 
-Things you may want to cover:
+# 見出し
 
-* Ruby version
+[TOC]
 
-* System dependencies
+## 操作説明
 
-* Configuration
+管理者側でのログイン方法
 
-* Database creation
+1. /admins/sign_in にアクセス
+2. メールアドレス test@test.com
+3. パスワード    testtest
+4. "Sign in"　クリック
 
-* Database initialization
 
-* How to run the test suite
+作成背景（User story）
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+```gherkin=
+Instagramから人気となり，全国から注文が来るようになったため，情報の管理機能を含んだ通販サイト
+```
 
-* Deployment instructions
+制作期間
+---
+5月12日〜5月14日　設計
+5月14日〜5月23日　実装
+5月23日〜5月26日　テスト・発表準備
 
-* ...
+nagano_cakeとは
+---
+
+Ruby on Rails(5.2.6)を使用して制作したECサイト
+
+◆苦労した点
+管理者側と利用者側でそれぞれに機能を実装した点
+注文情報入力画面→注文情報確認画面→購入確定画面の遷移の際のデータの受け渡し
+
+◆デザインに関して
+bootstrap4をフレームワークは使用
+#管理者側の機能について
+
+
+ユーザーからの注文内容を管理したり、商品を追加、編集できる
+
+ER図
+---
+![](https://i.imgur.com/l0W5Qpp.jpg)
+
+
+チームメンバー
+---
+かみやん
+やまたく
+たかぱむ
+ふくたろう
+
+Special　Thanks
+---
+Superイトシ
+ローランド 
+エアちゃん
+ドビー
+
+チーム名
+---
+堀北ドルトムント真希
