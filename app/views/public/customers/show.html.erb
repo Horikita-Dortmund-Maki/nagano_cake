@@ -1,41 +1,47 @@
-<div class="m-5">
- <div class="m-5">
-   <h4><span style="background-color:#ececec">　マイページ　</span></h4>
+
+ <div class="container">
+   <div class="row ">
+      <h1 class="heading08"><span>My page</span>マイページ</h1>
+    </div>
+    <div class="row">
+     <div class="col-2"></div>
+      <div class="col-6">
+        <%= render partial: 'layouts/flash' %>
+          <h3>登録情報</h3>
+          <%= link_to '編集する', edit_customer_path(@customer),  class: "btn btn-outline-success edit_customer_#{@customer.id}" %>
+            <table class="table">
+              <tr>
+                <th>氏名</th>
+                <th><%= @customer.last_name %><%= @customer.first_name %></th>
+              </tr>
+              <tr>
+                <th>カナ</th>
+                <th><%= @customer.last_name_kana %><%= @customer.first_name_kana %></th>
+              </tr>
+              <tr>
+                <th>郵便番号</th>
+                <th><%= @customer.postal_code %></th>
+              </tr>
+              <tr>
+                <th>住所</th>
+                <th><%= @customer.address %></th>
+              </tr>
+              <tr>
+                <th>電話番号</th>
+                <th><%= @customer.telephone_number %></th>
+              </tr>
+              <tr>
+                <th>メールアドレス</th>
+                <th><%= @customer.email %></th>
+              </tr>
+            </table>
+          <h4>配送先</h4>
+          <%= link_to '一覧を見る', send_addresses_path, class: "btn btn-outline-info" %>
+          
+          <h4>注文履歴</h4>
+          <%= link_to '編集する', orders_path, class: "btn btn-outline-info" %>
+       </div>
+    </div>
  </div>
-   <h4><strong>登録情報</strong></h4>
-   <%= link_to '編集する', edit_customer_path(@customer), class: "btn btn-sm btn-success edit_customer_#{@customer.id}" %>
-   
-   <table class="table">
-    <tr>
-     <th>氏名</th>
-     <th><%= @customer.last_name %>　<%= @customer.first_name %></th>
-    </tr>
-    <tr>
-     <th>カナ</th>
-     <th><%= @customer.first_name_kana %>　<%= @customer.last_name_kana %></th>
-    </tr>
-    <tr>
-     <th>郵便番号</th>
-     <th><%= @customer.postal_code %></th>
-    </tr>
-    <tr>
-     <th>住所</th>
-     <th><%= @customer.address %></th>
-    </tr>
-    <tr>
-     <th>電話番号</th>
-     <th><%= @customer.telephone_number %></th>
-    </tr>
-    <tr>
-     <th>メールアドレス</th>
-     <th><%= @customer.email %></th>
-    </tr>
-   </table>
-   <h4><strong>配送先</strong></h4>
-   <%= link_to '一覧を見る', send_addresses_path, class: "btn btn-sm btn-primary " %>
-   
-   <h4><strong>注文履歴</strong></h4>
-   <%= link_to '編集する', orders_path, class: "btn btn-sm btn-primary " %>
-</div>
-   
-  
+     
+     
