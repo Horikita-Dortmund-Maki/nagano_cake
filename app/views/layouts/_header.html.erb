@@ -8,6 +8,9 @@
           <li class="menu-item active"><%= link_to ' ログアウト', destroy_customer_session_path, method: :delete %></li>
         </ol>
       </nav>
+      <div class="row hoge">
+       <h4><%= current_customer.last_name %><%= current_customer.first_name %>様</h4>
+      </div>
     <% elsif admin_signed_in? %>
     <nav class="menu">
        <ol>
