@@ -68,7 +68,7 @@
             <th>
               <% array = [] %>
               <% @order.order_details.each do |order_detail| %>
-                <% array << order_detail.item.price * 1.1 * order_detail.amount %>
+                <% array << (order_detail.item.price * 1.1 * order_detail.amount).round %>
               <% end %>
               <%= array.sum %><text>円</text>
             </th>

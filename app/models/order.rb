@@ -3,6 +3,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details
   has_many :items, through: :order_details
+  
 
   def self.total_amount(order_details)
     order_details.all.sum(:amount)
@@ -34,6 +35,7 @@ class Order < ApplicationRecord
   
   attr_accessor :address_select
   attr_accessor :send_address_id
+  
   
     
     

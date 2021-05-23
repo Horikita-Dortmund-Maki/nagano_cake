@@ -2,45 +2,36 @@
   <div class="m-5">
     <h4><span style="background-color:#ececec">　会員情報編集　</span></h4>
   </div>
-   <%= form_with model:@customer, local:true do |f| %>
-      <div class="field">
-          <%= f.label :氏名　　 %>
-          <%= f.text_field :last_name, class: "last_name" %>
-          <%= f.text_field :first_name, class: "first_name" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :フリガナ　 %>
-          <%= f.text_field :last_name_kana, class: "last_name_kana" %>
-          <%= f.text_field :first_name_kana, class: "first_name_kana" %>
-        </div>
-
-        <div class="field">
-          <%= f.label :郵便番号　 %>
-          <%= f.text_field :postal_code %>
-        </div>
-
-        <div class="field">
-          <%= f.label :住所　 %>
-          <%= f.text_field :address %>
-        </div>
-
-        <div class="field">
-          <%= f.label :電話番号　 %>
-          <%= f.text_field :telephone_number %>
-        </div>
-        
-        <div class="field">
-          <%= f.label :メールアドレス　 %>
-          <%= f.email_field :email %>
-        </div>
-        
-        <div class="form-group">
-        <%= f.submit "編集内容を保存",class: 'btn btn-sm btn-success' %>
-      </div>
-      
+    <%= form_with model:@customer, local:true do |f| %>
+    <div class="field">
+        <%= f.label :氏名　　 %>
+        <%= f.text_field :last_name, class: "last_name" %>
+        <%= f.text_field :first_name, class: "first_name" %>
+    </div>
+    <div class="field">
+      <%= f.label :フリガナ　 %>
+      <%= f.text_field :last_name_kana, class: "last_name_kana" %>
+      <%= f.text_field :first_name_kana, class: "first_name_kana" %>
+    </div>
+    <div class="field">
+      <%= f.label :郵便番号　 %>
+      <%= f.text_field :postal_code %>
+    </div>
+    <div class="field">
+      <%= f.label :住所　 %>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :電話番号　 %>
+      <%= f.text_field :telephone_number %>
+    </div>
+    <div class="field">
+      <%= f.label :メールアドレス　 %>
+      <%= f.email_field :email %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "編集内容を保存",class: 'btn btn-sm btn-success' %>
+    </div>
     <% end %>
-    
-      <%= link_to '退会する', 'unsubscribe', class: "btn btn-sm btn-warning " %>
-    
-</div>
+    <%= link_to '退会する', 'unsubscribe', class: "btn btn-sm btn-warning " %>
+  </div>
