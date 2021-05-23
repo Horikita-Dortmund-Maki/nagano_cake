@@ -21,7 +21,7 @@ end
 #管理者
 Admin.create!(
   name: 'test',
-  email: 'test@test.com',
+  email: 'test21@test.com',
   password: 'testtest'
   )
 
