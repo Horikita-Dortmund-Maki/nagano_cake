@@ -17,7 +17,7 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to admin_items_path, success: "作成しました"
+      redirect_to admin_item_path(@item.id), success: "作成しました"
     else
       flash.now[:danger] = '作成に失敗しました。'
       render :new
