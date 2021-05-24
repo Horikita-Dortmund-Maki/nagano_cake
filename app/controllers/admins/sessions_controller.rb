@@ -12,10 +12,12 @@ class Admins::SessionsController < Devise::SessionsController
   # def create
   # end
 
-   #DELETE /resource/sign_out
-   #def destroy
-     #redirect_to "/admins/sign_in"
-   #end
+
+  #DELETE /resource/sign_out
+  #def destroy
+    #super
+  #end
+
 
   # protected
 
