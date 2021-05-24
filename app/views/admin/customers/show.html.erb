@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <nav class="navbar navbar-light">
+        <h2 class='title'>Detail of <%= @customer.last_name %><%= @customer.first_name %></h2>
+      </nav>
+    </div>
+  </div>
+  <%= render partial: 'layouts/flash' %>
+  <div class='row'>
+    <div class='mx-auto'>
+      <table class="table table-borderless title">
+        <tr>
+          <td><lebel>Customer_ID</lebel></td>
+          <td><%= @customer.id %></td>
+        </tr>
+        <tr>
+          <td><label>Name</label></td>
+          <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        </tr>
+        <tr>
+          <td><lebel>Kana</lebel></td>
+          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td><lebel>Postal Code</lebel></td>
+          <td><%= @customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td><lebel>Address</lebel></td>
+          <td><%= @customer.address %></td>
+        </tr>
+        <tr>
+          <td><lebel>Phone Number</lebel></td>
+          <td><%= @customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td><lebel>email</lebel></td>
+          <td><%= @customer.email %></td>
+        </tr>
+        <tr>
+          <td>
+           <lebel>Status</lebel>
+          </td>
+          <td>
+            <% if @customer.id_deleted == true %>
+              退会
+            <% else %>
+              <font color="#008000">有効</font>
+            <% end %>
+          </td>
+        </tr>
+         <td><%= link_to "Edit", edit_admin_customer_path(@customer.id), class: "btn btn-dark" %></td>
+         <td><%= link_to "Order List",admin_orders_path,class:"btn btn-secondary" %></td>
+      </table>
+    </div>
+  </div>
+</div>
