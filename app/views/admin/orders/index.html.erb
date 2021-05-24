@@ -1,0 +1,37 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3 offset-md-1'>
+      <nav class="navbar navbar-light">
+      <h2 class='title'>Order List</h2>
+      </nav>
+    </div>
+  </div>
+
+  <div class='row'>
+    <table class='table'>
+      <thead class='title bodydesign'>
+        <tr>
+          <th class='text-white bg-dark'>Purchase Date</th>
+          <th class='text-white bg-dark'>Customer</th>
+          <th class='text-white bg-dark'>Amount</th>
+          <th class='text-white bg-dark'>Order_status</th>
+        </tr>
+      </thead>
+      <tbody class='title bodydesign'>
+        <% @orders.each do |order| %>
+          <tr>
+            <th><%= link_to order.created_at.to_s(:datetime_jp), admin_order_path(order), data: {"turbolinks" => false}, :style => 'color:black;' %></th>
+            <th><%= order.name %></th>
+            <th><%= Order.total_amount(order.order_details) %></th>
+            <th><%= order.status %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class='row'>
+    <div class='mx-auto'>
+      <p><%= paginate @orders %></p>
+    </div>
+  </div>
+</div>

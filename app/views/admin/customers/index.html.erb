@@ -1,0 +1,42 @@
+ <div class="container">
+   <div class="row">
+      <div class="col-md-3 offset-md-1">
+        <nav class="navbar navbar-light">
+         <h2 class='title'>Customers</h2>
+         </nav>
+      </div>
+   </div>
+   <div class="row hoge">
+       <div class="col-8 ">
+          <table class='table'>
+              <thead class="thead-light title bodydesign">
+                 <tr>
+                    <th class='text-white bg-dark'>Customer_ID</th>
+                    <th class='text-white bg-dark'>Name</th>
+                    <th class='text-white bg-dark'>email</th>
+                    <th class='text-white bg-dark'>Status</th>
+                 </tr>
+              </thead>
+              <tbody class='title bodydesign'>
+                <% @customers.each do |customer| %>
+                 <tr>
+                    <td><%= customer.id %></td>
+                    <td><%= link_to admin_customer_path(customer), :style => 'color:black;'  do %>
+                         <%= customer.last_name %><%= customer.first_name %>
+                     <% end %>
+                    </td>
+                    <td><%= customer.email %></td>
+                      <% if customer.id_deleted == true %>
+                        <th><span>退会</span></th>
+                      <% else %>
+                        <th><font color="#008000">有効</font></th>
+                      <% end %>
+                   </tr>
+                  <% end %>
+               </tbody>
+          </table>
+      <div class='p-top__paginate pagination-design'><%= paginate(@customers) %></div>
+        </diV>
+     </div>
+  </div>
+

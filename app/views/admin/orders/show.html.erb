@@ -1,0 +1,109 @@
+<div class='container'>
+  <div class='row'>
+    <div class='md-col-4'>
+      <h2 class='title'>Order Detail</h3>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div class='md-col-2'>
+      <table class='table table-borderless title'>
+        <body>
+          <tr>
+            <th>Name</th>
+            <th><%= link_to @order.name, admin_customer_path(@order.customer_id), :style => 'color:black' %></th>
+          </tr>
+          <tr>
+            <th>Purchase Date</th>
+            <th><%= @order.created_at.to_s(:datetime_jp) %></th>
+          </tr>
+          <tr>
+            <th>Send Address</th>
+            <th><%= @order.address %></th>
+          </tr>
+          <tr>
+            <th>Payment Method</th>
+            <th><%= @order.payment_method %></th>
+          </tr>
+          <tr>
+            <th>Order Status</th>
+            <%= form_with model:@Order, local:true, method: :patch do |f| %>
+              <th>
+                <%= f.select :status, Order.statuses.keys, {include_blank: @order.status}, class:'btn btn-outline-dark' %>
+              </th>
+              <th>
+                <%= f.submit 'Update', class:'btn btn-dark' %>
+              </th>
+            <% end %>
+          </tr>
+        </body>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class='container'>
+  <div class='row align-items-end'>
+    <div class='col-md-10 offset-md-1'>
+      <table class='table bodydesign-orderdetail title'>
+        <thead>
+          <tr>
+            <th class='text-white bg-dark'>Item</th>
+            <th class='text-white bg-dark'>Cost(in_tax)</th>
+            <th class='text-white bg-dark'>Amount</th>
+            <th class='text-white bg-dark'>Subtotal</th>
+            <th class='text-white bg-dark'>Making Status</th>
+            <th class='bg-dark'></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order_details.each do |order_detail| %>
+            <tr>
+              <th><%= order_detail.item.name %> </th>
+              <th><%= Order.item_price_in_tax(order_detail) %></th>
+              <th><%= order_detail.amount %></th>
+              <th><%= Order.item_price_subtotal(order_detail) %></th>
+              <%= form_with model:order_detail, url: admin_order_detail_path(order_detail), method: :patch, local:true do |f| %>
+                <th><%= f.select :making_status, OrderDetail.making_statuses.keys, {include_blank: order_detail.making_status}, class:'btn btn-outline-dark' %></th>
+                <th>
+                  <%= f.submit 'Update', class:'btn btn-dark' %>
+                </th>
+              <% end %>
+            </tr>
+          <% end %>
+        </body>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-5 offset-1'>
+      <table class='table table-borderless title-orderdetail'>
+        <tbody>
+          <tr>
+            <th>Item Total</th>
+            <th>
+              <% array = [] %>
+              <% @order.order_details.each do |order_detail| %>
+                <% array << order_detail.item.price * 1.1 * order_detail.amount %>
+              <% end %>
+              <%= (array.sum).round %><text> yen</text>
+            </th>
+          </tr>
+          <tr>
+            <th>Shipping</th></th>
+            <th>
+              <%= @order.shopping_cost %><text> yen</text>
+            </th>
+          </tr>
+          <tr>
+            <th>Billed Amount</th>
+            <th>
+              <%= (array.sum + @order.shopping_cost).round %><text> yen</text>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>

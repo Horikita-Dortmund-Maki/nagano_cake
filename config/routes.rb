@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get 'admins/sign_in' => 'admins/sessions#new', as: 'new_admin_session'
     post 'admins/sign_in' => 'admins/sessions#create', as: 'admin_session'
-    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'    
+    delete 'admins/sign_out' => 'admins/sessions#destroy', as: 'destroy_admin_session'
   end
   devise_for :customers, skip: :all
     devise_scope :customer do
@@ -19,25 +19,46 @@ Rails.application.routes.draw do
 
   root :to => "homes#top"
   get "home/about" =>"homes#about"
-  post 'orders/confirm(/:id)', to: 'orders#confirm'
+
   get "/thanks" => "public/thanks#index"
   post 'order_details/confirm(/:id)', to: 'order_datails#confirm'
 
+  post '/add_item' => 'carts#add_item'
+  post '/update_item' => 'carts#update_item'
+  delete '/delete_item' => 'carts#delete_item'
+
+
+
   scope module: :public do
     resources :customers, only: [:show,:edit,:update,:create]
+    get "customers/:id/unsubscribe" => "customers#unsubscribe"
+    put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
+
     resources :items, only: [:index,:show,:edit,:update]
-    resources :cart_items, only: [:show, :destroy]
-    resources :orders, only: [:show,:comfirm,:create,:index]
+    resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] do #:create, :update, :destroy追加(神山)
+      collection do
+        delete 'destroy_all'
+      end
+    end
+    
+    
+    resources :orders, only: [:create,:index,:new,:show] do
+     collection do
+       post 'confirm'
+     end
+    end
     resources :order_details, only: [:show,:comfirm,:create,:index]
-    resources :addresses, only: [:index,:edit,:destroy,:create,:update]
+    resources :send_addresses, only: [:index,:edit,:destroy,:create,:update]
   end
+
   namespace :admin do
-    resources :customers, only: [:index,:show,:edit,:update]
-    resources :order_details, only: [:show]
-    resources :orders, only: [:index,:edit,:update]
-    resources :genre, only: [:index,:edit,:update,:create]
-    resources :items, only: [:show,:edit,:new,:create]
+    resources :customers, only: [:index,:show,:edit]
+    patch 'customers/:id' => 'customers#update'
+    resources :order_details, only: [:show,:update]
+    resources :orders, only: [:index,:edit,:update,:show]
+    resources :order_details, only: [:show, :update]
+    resources :genres, only: [:index,:edit,:create,]
+    patch 'genre/:id' => 'genres#update',as: 'genre'
+    resources :items, only: [:index,:show,:edit,:new,:create,:update]
   end
-
-
 end

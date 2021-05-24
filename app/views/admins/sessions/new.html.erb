@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+      <nav class="navbar navbar-light">
+        <h2 class='title'>Administractor Login</h2>
+      </nav>
+  </div>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class='row newitem title'>
+      <div class="col-4 offset-1 hoge">
+        <%= f.label :'email' %>
+      </div>
+      <div class="col-3">
+        <div class="field">
+          <%= f.email_field :email,class: "form-control", :size=>"45", autofocus: true, autocomplete: "email",placeholder: "sample@example.com" %>
+         </div>
+      </div>
+    </div>
+    <div class="row newitem title">
+      <div class="col-4 offset-1 hoge">
+       <%= f.label :'password' %>
+      </div>
+      <div class="col-3">
+        <div class="field">
+          <%= f.password_field :password,class: "form-control",:size=>"45", autocomplete: "current-password" %>
+        </div>
+      </div>
+    </div>
+      <div class="col-8 offset-4 pamu title">
+        <div class="actions">
+          <%= f.submit "Login",class: "btn btn-dark" %>
+        </div>
+      </div>
+  <% end %>
+
+  <%= render "admins/shared/links" %>
+</div>

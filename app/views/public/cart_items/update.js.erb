@@ -1,0 +1,2 @@
+$('#cart-subtotal-<%= @cart_item.id %>').html("<%= tax_subtotal(@cart_item.item.price, @cart_item.amount) %>円");
+$('#cart-total').html("<%= tax_total_price(@cart_items)%>円");
