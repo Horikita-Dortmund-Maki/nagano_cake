@@ -21,6 +21,8 @@ class Public::CartItemsController < ApplicationController
           cart_item.update_attribute(:amount, new_amount)
           @cart_item.delete
           redirect_to cart_item_path(current_customer), success: "カートに商品を追加しました"
+        else
+        
         end
       end
     else @cart_item.save
