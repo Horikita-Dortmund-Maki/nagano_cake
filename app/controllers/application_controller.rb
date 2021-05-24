@@ -23,9 +23,11 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_items_path
     when Customer
-      items_path
+      customer_path(resource)
     end
   end
+
+
 
   def after_sign_out_path_for(scope)
     case scope
