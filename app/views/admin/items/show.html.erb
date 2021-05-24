@@ -1,0 +1,50 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <nav class="navbar navbar-light">
+      <h2 class='title'>Details</h2>
+      </nav>
+    </div>
+  </div>
+    <%= render partial: 'layouts/flash' %>
+  <div class='row'>
+    <div class='col-md-3'>
+      <%= attachment_image_tag @item, :image, :fill, 300, 200, format:'jpeg', fallback:'no_image.jpg' %>
+    </div>
+
+    <div class='col-4 offset-1'>
+      <table class='table table-borderless title'>
+        <tr>
+          <th>Name</th>
+          <th><%= @item.name %></th>
+        </tr>
+        <tr>
+          <th>Introduction</th>
+          <th><%= @item.introduction %></th>
+        </tr>
+        <tr>
+          <th>Genre</th>
+          <th><%= @item.genre.name %></th>
+        </tr>
+        <tr>
+          <th>Price(in_tax)<br>(no_tax）</th>
+
+          <th><%= (@item.price*1.10).round %>(<%= @item.price %>)<text>yen</text></th>
+        </tr>
+        <tr>
+          <th>Status</th>
+          <% if @item.is_active == true %>
+            <th class='text-success'>販売中</th>
+          <% else %>
+            <th class='text-secondary'>販売停止中</th>
+          <% end %>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='mx-auto title'>
+      <%= link_to 'Edit', edit_admin_item_path(@item.id), class:'btn btn-lg btn-dark' %>
+    </div>
+  </div>
+</div>

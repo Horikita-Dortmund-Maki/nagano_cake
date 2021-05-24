@@ -1,5 +1,57 @@
-<html>
+<div class="container">
+  <div class="row hoge">
+      <%= render partial: 'layouts/flash' %>
+      　 <a href="https://twitter.com/m9NksyrvVFm77Pr" class="btn btn-sns btn-sns--twitter">
+            <i class="fab fa-twitter"></i>
+         </a>
+          <a href="https://www.instagram.com/nagano_1234/" class="btn btn-sns btn-sns--instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+      　  <h1>~ Welcome to Nagano Cake ~</h1>
+          <%= image_tag '/assets/logo.png', :size => '100x100' %>
+    </div>
+    <div class="img_wrap">
+       <img src="https://cotodama.co/wp-content/uploads/2018/09/css_mouseover_img03.png">
+     </div>
+    <div class='row'>
+      <div class="mx-auto" >
+        <h4>ようこそ、ながのCAKEへ！<br>
+        このサイトは、ケーキ販売のECサイトになります。<br>
+        会員でない方も商品の閲覧はできますが、<br>
+        購入には会員登録が必要になります。</h4>
+      </div>
+    </div>
 
-<h1>TOP画面です</h1>
+  <div class="container margin">
+    <div class="row">
+      <div class="col-md-3">
+        <h3 class="font-italic">〜New Arrival〜</h3>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @items.each do |item| %>
+        <% if item.is_active == true %>
+        <div class="col-md-3">
+          <div class="card border-0">
+            <%= link_to item_path(item.id) do %>
+            <div class="item_img">
+              <%= attachment_image_tag(item, :image, height: "150", fallback: "no_image.jpg") %>
+            </div>
+            <div class="card-body text-center">
+              <p class="card-title"><%= item.name %></p>
+              <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+            </div>
+            <% end %>
+          </div>
+        </div>
+        <%end%>
+      <%end%>
+    </div>
+  </div>
+ <div class="text-right">
+    <%= link_to 'and more... >', items_path ,class: "btn btn-info"%>
+  </div>
 
-</html>
+</div>

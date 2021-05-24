@@ -1,11 +1,43 @@
-<li class="list-none">
-    <%= cart_item.product.name %>
-    <%= cart_item.product.price %>
-    <%= form_with(url: update_item_url, method: :post,local: true) do |f| %>
-    <%= f.hidden_field :item_id, value: cart_item.item.id %>
-    <%= f.number_field :quantity ,value: cart_item.quantity%>
-    <%= f.submit "更新", class: "" %>
-    <% end %>
-    <%= button_to "削除", delete_item_path(item_id: cart_item.item.id), method: :delete,
-                                       data: { confirm: "商品を削除しますか？" } %>
-</li>
+  <div class="container">
+    <div class="row">
+       <div class="col-11">
+          <div id="cart_item_change"> <!-- 非同期通信の指定された箱 -->
+            <table class='table'>
+              <thead class="table-primary">
+                <tr>
+                  <th>商品名</th>
+                  <th>単価(税込)</th>
+                  <th>数量</th>
+                  <th>小計</th>
+                  <th colspan="5"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% cart_items.each do |cart_item| %>
+                  <tr id="cart_item_<%= cart_item.id %>">
+                    <td>
+                        <%= attachment_image_tag(cart_item.item, :image, :fill, 50, 50, fallback: "no_image.jpg") %>
+                        <%= cart_item.item.name %>
+                    </td>
+                    <td><%= tax_price(cart_item.item.price) %>円</td> <!-- 単価 -->
+                    <td>
+                      <%= form_with model:cart_item, url: cart_item_path(cart_item), remote: true, method: :patch do |f| %> <!-- ここの引数はcurrent_customerではRecordNotFound (Couldn't find CartItem with 'id'=1):のエラーが発生 -->
+                        <%= f.hidden_field :item_id, value: cart_item.item_id %>
+                        <%= f.select :amount, (1..30).each{ |n| n } %>
+                        <%= f.submit "変更", class: "btn btn-outline-success" %>
+                      <% end %>
+                    </td>
+                    <td id="cart-subtotal-<%= cart_item.id %>">
+                      <%= tax_subtotal(cart_item.item.price, cart_item.amount) %>円
+                    </td> <!-- 小計 -->
+                    <td>
+                      <%= link_to "削除する", cart_item_path(cart_item), method: :delete, remote: true, data: {confirm: '商品を削除して本当によろしいですか？'}, class: "btn btn-outline-danger" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+       </div>
+    </div>
+</div>
