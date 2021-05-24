@@ -21,12 +21,15 @@ class Public::CartItemsController < ApplicationController
           cart_item.update_attribute(:amount, new_amount)
           @cart_item.delete
           redirect_to cart_item_path(current_customer), success: "カートに商品を追加しました"
+        else @cart_item.save
+          redirect_to request.referer, danger: "数量を指定してください。"
         end
       end
-    else @cart_item.save
-      redirect_to request.referer, danger: "数量を指定してください。"
+    @cart_item.save
+    #else @cart_item.save
+      #redirect_to request.referer, danger: "数量を指定してください。"
       #redirect_to request.referer＝一つ前の画面に戻る、　danger: ""　で　flash[:danger] = ""　と同じ
-    end
+    #end
 
   end
 
