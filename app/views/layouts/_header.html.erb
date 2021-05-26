@@ -2,6 +2,7 @@
     <% if customer_signed_in? %>
       <nav class="menu">
         <ol>
+          <a class="navbar-brand" href="/"><span><%= image_tag '/assets/logo.png', :size => '100x100' %></span></a>
           <li class="menu-item active"><%= link_to ' マイページ',customer_path(current_customer)%></li>
           <li class="menu-item active"><%= link_to ' 商品一覧',items_path %></li>
           <li class="menu-item active"><%= link_to ' カート',cart_item_path(current_customer) %></li>
