@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :customer
   has_many :order_details
   has_many :items, through: :order_details
-  
+
 
   def self.total_amount(order_details)
     order_details.all.sum(:amount)
