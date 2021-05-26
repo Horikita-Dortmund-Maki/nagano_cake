@@ -16,14 +16,16 @@ class Public::CartItemsController < ApplicationController
     @cart_items = current_customer.cart_items.all
     unless @cart_item.amount == nil  #@cart_item.amountがNilではないときに
       @cart_items.each do |cart_item|
-        if cart_item.item.id == @cart_item.item.id
+        if cart_item.item_id == @cart_item.item_id
           new_amount = cart_item.amount + @cart_item.amount
           cart_item.update_attribute(:amount, new_amount)
           @cart_item.delete
-          redirect_to cart_item_path(current_customer), success: "カートに商品を追加しました"
         end
+      # return Rubyでリターンは基本使わない
       end
-    else @cart_item.save
+      @cart_item.save
+      redirect_to cart_item_path(current_customer), success: "カートに商品を追加しました" #each文の中に入れない（無限ダイレクト地獄）
+    else
       redirect_to request.referer, danger: "数量を指定してください。"
       #redirect_to request.referer＝一つ前の画面に戻る、　danger: ""　で　flash[:danger] = ""　と同じ
     end
