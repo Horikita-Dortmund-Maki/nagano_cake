@@ -33,7 +33,7 @@
             <div class="radio-inline">
               <%= f.radio_button :address_select,1 %>
               <%= f.label :address_select, "登録済住所から選択" %>
-              <%= f.select :send_address_id, @send_addresses.map { |send_address| [send_address.name + send_address.address + send_address.postal_code,send_address.id ] } %>
+              <%= f.select :send_address_id, @send_addresses.map { |send_address| [send_address.name + "　" + send_address.address + "　" + send_address.postal_code,send_address.id ] } %>
             </div>
             <div class="radio-inline">
               <%= f.radio_button :address_select,2 %>
