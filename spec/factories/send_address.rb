@@ -1,4 +1,4 @@
-FactoryBot define do
+FactoryBot.define do
   factory :send_address do
     customer_id{"1"}
     postal_code{ Faker::Number.number(digits:7) }

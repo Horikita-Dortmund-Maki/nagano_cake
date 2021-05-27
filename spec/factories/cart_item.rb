@@ -1,7 +1,5 @@
-FactoryBot define do
-  factiry :cart_item do
-    customer_id{"1"}
-    item_id{"1"}
-    amount{"2"}
+FactoryBot.define do
+  factory :cart_item do
+    quantity { 1 }
   end
 end
