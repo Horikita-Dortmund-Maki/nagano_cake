@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 
 # RSpec.describe Admin, type: :model do
 describe "管理者ログイン後のテスト" do
