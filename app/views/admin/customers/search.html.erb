@@ -1,0 +1,33 @@
+  <div class="container">    
+      <div class="row hoge">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <% if @customers == [] %>
+          <h2 class = "seach-result">検索結果はありません</h2>
+          <% else %>
+              <table class='table'>
+                  <thead class="thead-light title bodydesign">
+                     <tr>
+                        <th class='text-white bg-dark'>Customer_ID</th>
+                        <th class='text-white bg-dark'>Name</th>
+                     </tr>
+                  </thead>
+                  <tbody class='title bodydesign'>
+                    <% @customers.each do |customer| %>
+                     <tr>
+                        <td><%= customer.id %></td>
+                        <td><%= link_to admin_customer_path(customer), :style => 'color:black;'  do %>
+                             <%= customer.last_name %><%= customer.first_name %>
+                         <% end %>
+                        </td>
+                       </tr>
+                      <% end %>
+                   </tbody>
+              </table>
+          <% end %>
+        </div>
+     </div>
+  </div>
+
+
+        

@@ -30,11 +30,13 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-    resources :customers, only: [:show,:edit,:update,:create]
+    resources :customers, only: [:show,:edit,:update,:create] 
     get "customers/:id/unsubscribe" => "customers#unsubscribe"
     put "/customers/:id/withdraw" => "customers#withdraw", as: "customers_withdraw"
 
-    resources :items, only: [:index,:show,:edit,:update]
+    resources :items, only: [:index,:show,:edit,:update] do
+        get :search, on: :collection
+      end
     resources :cart_items, only: [:show, :destroy, :create, :update, :destroy] do #:create, :update, :destroy追加(神山)
       collection do
         delete 'destroy_all'
@@ -52,7 +54,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :customers, only: [:index,:show,:edit]
+    resources :customers, only: [:index,:show,:edit] do
+              get :search, on: :collection
+            end
     patch 'customers/:id' => 'customers#update'
     resources :order_details, only: [:show,:update]
     resources :orders, only: [:index,:edit,:update,:show]

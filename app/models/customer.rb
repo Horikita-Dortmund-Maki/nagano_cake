@@ -23,6 +23,14 @@ class Customer < ApplicationRecord
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   validates :telephone_number, presence: true, format: { with: VALID_PHONE_REGEX }
   
+  def self.search(search)
+    if search != ""
+      Customer.where(['last_name LIKE(?) OR first_name LIKE(?) OR last_name_kana LIKE(?) OR first_name_kana LIKE(?) ', "%#{search}%", "%#{search}%", "%#{search}%","%#{search}%" ])
+    else
+      Customer.includes(:customer).order('created_at DESC')
+    end
+  end
+  
     
   
   def active_for_authentication?

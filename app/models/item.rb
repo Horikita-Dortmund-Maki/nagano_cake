@@ -13,5 +13,14 @@ class Item < ApplicationRecord
 
 
   attachment :image
+  
+    
+  def self.search(search)
+    if search != ""
+      Item.where(['name LIKE(?) OR genre_id LIKE(?) ', "%#{search}%", "%#{search}%"])
+    else
+      Item.includes(:customer).order('created_at DESC')
+    end
+  end
 
 end

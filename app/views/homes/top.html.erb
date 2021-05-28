@@ -23,8 +23,14 @@
     </div>
 
   <div class="container margin">
-    <div class="row">
-      <div class="col-md-3">
+    <div class="row hoge">
+        <%= form_with(url: search_items_path, local: true, method: :get, class: "search-form") do |form| %>
+          <%= form.text_field :keyword, placeholder: "商品を検索する", class: "search-input" %>
+          <%= form.submit "検索", class: "search-btn" %>
+        <% end %>
+     </div>
+     <div class="row">
+       <div class="col-4">
         <h3 class="font-italic">〜New Arrival〜</h3>
       </div>
     </div>

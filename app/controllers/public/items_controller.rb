@@ -15,7 +15,10 @@ class Public::ItemsController < ApplicationController
         @cart_item = CartItem.new
         # @price = (@item.price*1.1).round
     end
-
+    
+    def search
+      @items = Item.search(params[:keyword])
+    end
 
 
   private

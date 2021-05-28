@@ -7,6 +7,12 @@
       </div>
    </div>
    <div class="row hoge">
+           <%= form_with(url: search_admin_customers_path, local: true, method: :get, class: "search-form") do |form| %>
+              <%= form.text_field :keyword, placeholder: "会員を検索する", class: "search-input" %>
+              <%= form.submit "検索", class: "search-btn" %>
+           <% end %>
+   </div>
+   <div class="row hoge">
        <div class="col-8 ">
           <table class='table'>
               <thead class="thead-light title bodydesign">

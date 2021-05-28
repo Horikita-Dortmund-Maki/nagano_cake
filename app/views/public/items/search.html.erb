@@ -1,0 +1,24 @@
+  <div class="container">    
+      <div class="row hoge">
+          <% if @items == [] %>
+          <h2 class = "seach-result">検索結果はありません</h2>
+          <% else %>
+              <% @items.each do |item| %>
+                <div class="col-md-3">
+                  <div class="card border-0">
+                    <%= link_to item_path(item.id) do %>
+                    <div class="item_img">
+                      <%= attachment_image_tag(item, :image, height: "150", fallback: "no_image.jpg") %>
+                    </div>
+                    <div class="card-body text-center">
+                      <p class="card-title"><%= item.name %></p>
+                      <h4 class="card-price">¥<%= tax_price(item.price) %></h4>
+                    </div>
+                    <% end %>
+                  </div>
+                </div>
+            <% end %>
+         <% end %>
+        </div>
+     </div>
+  </div>
