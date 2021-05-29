@@ -2,13 +2,8 @@ class ApplicationController < ActionController::Base
 
 
    before_action :configure_permitted_parameters, if: :devise_controller?
-   before_action :set_search
    add_flash_types :success, :info, :warning, :danger
 
-  def set_search
-    @search = Item.ransack(params[:q])
-    @items = @search.result
-  end
 
   # def after_sign_up_path_for(resource)
   #   items_path(resource)

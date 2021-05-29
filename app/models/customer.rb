@@ -27,7 +27,7 @@ class Customer < ApplicationRecord
     if search != ""
       Customer.where(['last_name LIKE(?) OR first_name LIKE(?) OR last_name_kana LIKE(?) OR first_name_kana LIKE(?) ', "%#{search}%", "%#{search}%", "%#{search}%","%#{search}%" ])
     else
-      Customer.includes(:customer).order('created_at DESC')
+      Customer.all
     end
   end
   

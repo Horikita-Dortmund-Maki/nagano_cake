@@ -23,7 +23,7 @@ class Admin::CustomersController < ApplicationController
   end
   
   def search
-    @customers = Customer.search(params[:keyword])
+   　　 @customers = Customer.search(params[:keyword])
   end
 
      def customer_params

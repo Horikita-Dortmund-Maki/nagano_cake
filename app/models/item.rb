@@ -16,10 +16,10 @@ class Item < ApplicationRecord
   
     
   def self.search(search)
-    if search != ""
-      Item.where(['name LIKE(?) OR genre_id LIKE(?) ', "%#{search}%", "%#{search}%"])
+    if search != "" #検索フォームに何か値が入力されていた場合
+      Item.where(['name LIKE(?) OR genre_id LIKE(?) ', "%#{search}%", "%#{search}%"]) #カラムで検索
     else
-      Item.includes(:customer).order('created_at DESC')
+      Item.all
     end
   end
 

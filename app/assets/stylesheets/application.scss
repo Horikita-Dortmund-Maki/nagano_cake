@@ -14,6 +14,7 @@
  *= require_self
  */
 
+
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
@@ -128,6 +129,8 @@ margin: 0 20px;
 }
 
 .row.hoge{
+  
+  
     display: flex;
     justify-content: center;
 }

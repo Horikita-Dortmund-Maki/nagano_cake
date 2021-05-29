@@ -19,4 +19,3 @@
 //= require turbolinks
 //= require_tree .
 // Inspired by https://dribbble.com/shots/1075480-Ui-Kit-Hotel
-
